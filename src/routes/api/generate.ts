@@ -9,9 +9,9 @@ async function enrichWithAI(params: {
   tone: string;
   language: string;
   description?: string;
-}) {
+  openaiKey?: string;
+}): Promise<{ data: any; source: "lovable" | "openai" | null; noCredits: boolean }> {
   const apiKey = process.env["LOVABLE_API_KEY"];
-  if (!apiKey) return null;
 
   const prompt = `Você é um copywriter de elite em ofertas low ticket e páginas de alta conversão.
 Melhore e adapte os seguintes dados para a landing page em 11 blocos:
@@ -33,28 +33,37 @@ Responda APENAS com um JSON válido:
   ]
 }`;
 
-  try {
-    const res = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
+  const call = async (url: string, key: string, model: string) => {
+    const res = await fetch(url, {
       method: "POST",
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        model: "google/gemini-3-flash-preview",
-        messages: [{ role: "user", content: prompt }],
-      }),
+      headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
+      body: JSON.stringify({ model, messages: [{ role: "user", content: prompt }] }),
     });
-    if (!res.ok) return null;
-    const data = await res.json();
-    const text: string | undefined = data?.choices?.[0]?.message?.content;
-    if (!text) return null;
-    const jsonMatch = text.match(/\{[\s\S]*\}/);
-    if (!jsonMatch) return null;
-    return JSON.parse(jsonMatch[0]);
-  } catch {
-    return null;
+    if (!res.ok) return { status: res.status, data: null };
+    const json = await res.json();
+    const text: string | undefined = json?.choices?.[0]?.message?.content;
+    const m = text?.match(/\{[\s\S]*\}/);
+    return { status: res.status, data: m ? JSON.parse(m[0]) : null };
+  };
+
+  let noCredits = false;
+  if (apiKey) {
+    try {
+      const r = await call("https://ai.gateway.lovable.dev/v1/chat/completions", apiKey, "google/gemini-3-flash-preview");
+      if (r.data) return { data: r.data, source: "lovable", noCredits: false };
+      if (r.status === 402 || r.status === 403 || r.status === 429) noCredits = true;
+    } catch {}
+  } else {
+    noCredits = true;
   }
+
+  if (params.openaiKey) {
+    try {
+      const r = await call("https://api.openai.com/v1/chat/completions", params.openaiKey, "gpt-4o-mini");
+      if (r.data) return { data: r.data, source: "openai", noCredits };
+    } catch {}
+  }
+  return { data: null, source: null, noCredits };
 }
 
 export const Route = createFileRoute("/api/generate")({
@@ -72,6 +81,7 @@ export const Route = createFileRoute("/api/generate")({
           audience,
           tone,
         } = body;
+        const openaiKey = (body as any).openaiKey as string | undefined;
 
         let scraped = false;
         let scrapedInfo = null as Awaited<ReturnType<typeof scrapeUrl>>;
@@ -97,7 +107,8 @@ export const Route = createFileRoute("/api/generate")({
           scrapedInfo ?? undefined,
         );
 
-        const enriched = await enrichWithAI({
+        const ai = await enrichWithAI({
+          openaiKey,
           productName: productName || scrapedInfo?.title,
           audience,
           tone,
@@ -105,6 +116,7 @@ export const Route = createFileRoute("/api/generate")({
           description: scrapedInfo?.description,
         });
 
+        const enriched = ai.data;
         if (enriched) {
           if (enriched.headline) baseData.contentDireto.headline = enriched.headline;
           if (enriched.subheadline) baseData.contentDireto.subheadline = enriched.subheadline;
@@ -121,6 +133,8 @@ export const Route = createFileRoute("/api/generate")({
         return Response.json({
           scraped,
           language,
+          aiSource: ai.source,
+          noCredits: ai.noCredits,
           models: baseData.models,
           pageContentDireto: baseData.contentDireto,
           pageContentCenario: baseData.contentCenario,
