@@ -57,6 +57,7 @@ function AppContent() {
 
   // UI state for generated output
   const [isGenerating, setIsGenerating] = useState(false);
+  const [noCredits, setNoCredits] = useState(false);
   const [generatedData, setGeneratedData] = useState<GenerateResponse | null>(null);
   const [selectedModelIdx, setSelectedModelIdx] = useState<number>(0);
   const [selectedVariantIdx, setSelectedVariantIdx] = useState<number>(0);
