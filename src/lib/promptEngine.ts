@@ -1,4 +1,4 @@
-import { GenerateRequest, Model, Variant, LandingPageContent, LanguageKey } from '../types';
+import { GenerateRequest, Model, Variant, LandingPageContent, LanguageKey } from '@/types';
 
 export const LANGUAGES: Record<LanguageKey, { label: string; name: string; currency: string }> = {
   pt: { label: 'Português', name: 'português do Brasil', currency: 'R$' },
