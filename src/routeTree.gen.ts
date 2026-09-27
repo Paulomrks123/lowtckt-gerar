@@ -10,33 +10,102 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiGenerateRouteImport } from './routes/api/generate'
+import { Route as ApiLeadsRouteImport } from './routes/api/leads'
+import { Route as ApiPublishRouteImport } from './routes/api/publish'
+import { Route as PSlugRouteImport } from './routes/p.$slug'
+import { Route as ApiPagesSlugRouteImport } from './routes/api/pages.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiGenerateRoute = ApiGenerateRouteImport.update({
+  id: '/api/generate',
+  path: '/api/generate',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiLeadsRoute = ApiLeadsRouteImport.update({
+  id: '/api/leads',
+  path: '/api/leads',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublishRoute = ApiPublishRouteImport.update({
+  id: '/api/publish',
+  path: '/api/publish',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PSlugRoute = PSlugRouteImport.update({
+  id: '/p/$slug',
+  path: '/p/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPagesSlugRoute = ApiPagesSlugRouteImport.update({
+  id: '/api/pages/$slug',
+  path: '/api/pages/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/api/generate': typeof ApiGenerateRoute
+  '/api/leads': typeof ApiLeadsRoute
+  '/api/publish': typeof ApiPublishRoute
+  '/p/$slug': typeof PSlugRoute
+  '/api/pages/$slug': typeof ApiPagesSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/api/generate': typeof ApiGenerateRoute
+  '/api/leads': typeof ApiLeadsRoute
+  '/api/publish': typeof ApiPublishRoute
+  '/p/$slug': typeof PSlugRoute
+  '/api/pages/$slug': typeof ApiPagesSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/api/generate': typeof ApiGenerateRoute
+  '/api/leads': typeof ApiLeadsRoute
+  '/api/publish': typeof ApiPublishRoute
+  '/p/$slug': typeof PSlugRoute
+  '/api/pages/$slug': typeof ApiPagesSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/api/generate'
+    | '/api/leads'
+    | '/api/publish'
+    | '/p/$slug'
+    | '/api/pages/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/api/generate'
+    | '/api/leads'
+    | '/api/publish'
+    | '/p/$slug'
+    | '/api/pages/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/api/generate'
+    | '/api/leads'
+    | '/api/publish'
+    | '/p/$slug'
+    | '/api/pages/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ApiGenerateRoute: typeof ApiGenerateRoute
+  ApiLeadsRoute: typeof ApiLeadsRoute
+  ApiPublishRoute: typeof ApiPublishRoute
+  PSlugRoute: typeof PSlugRoute
+  ApiPagesSlugRoute: typeof ApiPagesSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +117,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/generate': {
+      id: '/api/generate'
+      path: '/api/generate'
+      fullPath: '/api/generate'
+      preLoaderRoute: typeof ApiGenerateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/leads': {
+      id: '/api/leads'
+      path: '/api/leads'
+      fullPath: '/api/leads'
+      preLoaderRoute: typeof ApiLeadsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/publish': {
+      id: '/api/publish'
+      path: '/api/publish'
+      fullPath: '/api/publish'
+      preLoaderRoute: typeof ApiPublishRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/p/$slug': {
+      id: '/p/$slug'
+      path: '/p/$slug'
+      fullPath: '/p/$slug'
+      preLoaderRoute: typeof PSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/pages/$slug': {
+      id: '/api/pages/$slug'
+      path: '/api/pages/$slug'
+      fullPath: '/api/pages/$slug'
+      preLoaderRoute: typeof ApiPagesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ApiGenerateRoute: ApiGenerateRoute,
+  ApiLeadsRoute: ApiLeadsRoute,
+  ApiPublishRoute: ApiPublishRoute,
+  PSlugRoute: PSlugRoute,
+  ApiPagesSlugRoute: ApiPagesSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
