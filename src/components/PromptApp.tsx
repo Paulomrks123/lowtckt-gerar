@@ -14,6 +14,7 @@ import {
   Image as ImageIcon,
   ExternalLink,
 } from 'lucide-react';
+import { SettingsMenu, getOpenAIKey } from './SettingsMenu';
 import {
   LANGUAGES,
   TONES,
@@ -151,6 +152,7 @@ function AppContent() {
     }
 
     setIsGenerating(true);
+    setNoCredits(false);
     setCopiedPrompt(false);
     setSelectedModelIdx(0);
     setSelectedVariantIdx(0);
@@ -171,6 +173,7 @@ function AppContent() {
           completePrice: completePrice.trim() || undefined,
           audience: audience.trim() || undefined,
           tone: toneString,
+          openaiKey: getOpenAIKey() || undefined,
         }),
       });
 
@@ -178,8 +181,10 @@ function AppContent() {
         throw new Error('Falha no servidor ao gerar');
       }
 
-      const data: GenerateResponse = await res.json();
+      const data: GenerateResponse & { noCredits?: boolean; aiSource?: string | null } = await res.json();
       setGeneratedData(data);
+      setNoCredits(!!data.noCredits && data.aiSource !== 'openai');
+      if (data.aiSource === 'openai') toast.success('Gerado com sua chave OpenAI');
       toast.success('Prompt e estrutura com 2 planos gerados!');
     } catch {
       // Deterministic Client-side generation fallback
@@ -375,11 +380,19 @@ function AppContent() {
 
   // Generator View
   return (
-    <main className="min-h-screen bg-[#0d1015] text-[#f1f3f7] selection:bg-emerald-500 selection:text-black">
+    <main className="relative min-h-screen w-full max-w-[100vw] overflow-x-hidden bg-[#0d1015] text-[#f1f3f7] selection:bg-emerald-500 selection:text-black">
       {/* Ambient background glow */}
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[450px] bg-[radial-gradient(ellipse_at_top,rgba(16,185,129,0.18),transparent_70%)]" />
 
-      <div className="relative mx-auto max-w-5xl px-5 py-12 sm:py-18">
+      <SettingsMenu />
+      <div className="relative mx-auto w-full max-w-5xl px-4 py-14 text-center sm:px-5 sm:py-18 sm:text-left">
+        {noCredits && (
+          <div role="alert" className="mx-auto mb-6 max-w-2xl rounded-xl border border-amber-500/50 bg-amber-500/10 p-4 text-center text-sm text-amber-200">
+            <TriangleAlert className="mx-auto mb-2 h-5 w-5" />
+            Os créditos de IA da Lovable acabaram. O prompt foi gerado no modo padrão (sem IA).
+            <br />Abra o menu <strong>☰</strong> no canto superior e adicione sua <strong>chave API da OpenAI</strong> para continuar usando IA.
+          </div>
+        )}
         {/* Header */}
         <header className="text-center">
           <span className="inline-flex items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-emerald-400 shadow-sm">
