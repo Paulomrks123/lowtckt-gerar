@@ -22,6 +22,7 @@ import {
   ELEVEN_BLOCKS,
   resolveTone,
   generateFullCopyData,
+  applyFocusToPrompt,
 } from '@/lib/promptEngine';
 import {
   LanguageKey,
@@ -228,6 +229,22 @@ function AppContent() {
         generateFullCopyData({ language, variants: 1, tone: 'Persuasivo' }).contentCenario
       : generatedData?.pageContentDireto ||
         generateFullCopyData({ language, variants: 1, tone: 'Persuasivo' }).contentDireto;
+
+  const selectHeadline = (h: string) => {
+    if (!generatedData) return;
+    const upd = (c?: LandingPageContent) => (c ? { ...c, headline: h } : c);
+    const d = upd(generatedData.pageContentDireto);
+    setGeneratedData({
+      ...generatedData,
+      pageContentDireto: d,
+      pageContentCenario: upd(generatedData.pageContentCenario),
+      models: generatedData.models.map((m) => ({
+        ...m,
+        variants: m.variants.map((v) => ({ ...v, prompt: d ? applyFocusToPrompt(v.prompt, d) : v.prompt })),
+      })),
+    });
+    toast.success('Headline escolhida!');
+  };
 
   // Copy current prompt
   const handleCopyCurrent = async () => {
@@ -670,6 +687,33 @@ function AppContent() {
                 </button>
               </div>
             </div>
+
+            {currentContent.headlineOptions && currentContent.headlineOptions.length > 0 && (
+              <div className="mt-4 rounded-xl border border-emerald-500/30 bg-emerald-500/5 p-3 text-left">
+                <p className="text-xs font-bold uppercase tracking-wide text-emerald-300">Escolha a headline</p>
+                <div className="mt-2 grid gap-2">
+                  {currentContent.headlineOptions.map((h, i) => (
+                    <button
+                      key={i}
+                      type="button"
+                      onClick={() => selectHeadline(h)}
+                      className={`rounded-lg border px-3 py-2 text-left text-sm transition-colors cursor-pointer ${
+                        currentContent.headline === h
+                          ? 'border-emerald-400 bg-emerald-500/20 text-white'
+                          : 'border-white/10 bg-white/5 text-white/70 hover:text-white'
+                      }`}
+                    >
+                      {i + 1}. {h}
+                    </button>
+                  ))}
+                </div>
+                {currentContent.mechanism && (
+                  <p className="mt-3 text-xs text-white/70">
+                    <span className="font-bold text-emerald-300">Mecanismo único:</span> {currentContent.mechanism.name}
+                  </p>
+                )}
+              </div>
+            )}
 
             {/* Action Bar */}
             <div className="mt-4 flex flex-wrap items-center justify-between gap-3">

@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { generateFullCopyData, LANGUAGES } from "@/lib/promptEngine";
+import { generateFullCopyData, LANGUAGES, applyFocusToPrompt } from "@/lib/promptEngine";
 import { scrapeUrl } from "@/lib/scrape.server";
 import type { GenerateRequest } from "@/types";
 
@@ -14,7 +14,7 @@ async function enrichWithAI(params: {
   const apiKey = process.env["LOVABLE_API_KEY"];
 
   const prompt = `Você é um copywriter de elite em ofertas low ticket e páginas de alta conversão.
-Melhore e adapte os seguintes dados para a landing page em 11 blocos:
+Foque em 3 coisas: (1) headline magnética, (2) um MECANISMO ÚNICO com nome próprio, (3) uma oferta irresistível. Melhore e adapte os seguintes dados para a landing page em 11 blocos:
 - Produto: ${params.productName || "Produto Digital"}
 - Público: ${params.audience || "Interessados"}
 - Tom de voz: ${params.tone}
@@ -23,7 +23,10 @@ ${params.description ? `- Conteúdo extraído da URL: ${params.description}` : "
 
 Responda APENAS com um JSON válido:
 {
-  "headline": "headline irresistível",
+  "headlineOptions": ["headline irresistível 1", "headline 2 com ângulo diferente", "headline 3 citando o mecanismo"],
+  "headline": "a melhor das 3 headlines",
+  "mechanism": {"name": "nome curto e marcante do mecanismo único", "explanation": "por que funciona e por que é diferente do que o público já tentou (2-3 frases)", "pillars": ["pilar 1", "pilar 2", "pilar 3"]},
+  "offer": {"promise": "promessa principal clara e específica", "reasonToBuyNow": "motivo de urgência para comprar agora", "objections": ["objeção: resposta", "objeção: resposta", "objeção: resposta"]},
   "subheadline": "subheadline forte quebrando objeção",
   "painPoints": ["dor 1", "dor 2", "dor 3", "dor 4"],
   "deliverables": [
@@ -128,6 +131,19 @@ export const Route = createFileRoute("/api/generate")({
             baseData.contentDireto.deliverables = enriched.deliverables;
             baseData.contentCenario.deliverables = enriched.deliverables;
           }
+          for (const c of [baseData.contentDireto, baseData.contentCenario]) {
+            if (enriched.headline) c.headline = enriched.headline;
+            if (Array.isArray(enriched.headlineOptions) && enriched.headlineOptions.length >= 3) {
+              c.headlineOptions = enriched.headlineOptions.slice(0, 3);
+              if (!enriched.headline) c.headline = c.headlineOptions![0]!;
+            }
+            if (enriched.mechanism?.name) c.mechanism = { ...c.mechanism!, ...enriched.mechanism };
+            if (enriched.offer?.promise) c.offer = { ...c.offer!, ...enriched.offer };
+          }
+          if (baseData.contentDireto.headlineOptions && !baseData.contentDireto.headlineOptions.includes(baseData.contentDireto.headline)) {
+            for (const c of [baseData.contentDireto, baseData.contentCenario]) c.headlineOptions = [c.headline, ...(c.headlineOptions ?? []).slice(0, 2)];
+          }
+          for (const m of baseData.models) for (const v of m.variants) v.prompt = applyFocusToPrompt(v.prompt, baseData.contentDireto);
         }
 
         return Response.json({

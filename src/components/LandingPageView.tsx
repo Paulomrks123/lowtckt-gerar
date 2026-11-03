@@ -141,6 +141,12 @@ function LandingPageBlocks({
 
           <BlockBadge label="BLOCO 1 - VENDER SOZINHO" />
 
+          {c.mechanism?.name && (
+            <div className="mt-2 mb-3 inline-flex rounded-full border border-amber-400/40 bg-amber-400/10 px-3 py-1 text-xs font-bold uppercase tracking-wide text-amber-300">
+              ⚙️ {c.mechanism.name}
+            </div>
+          )}
+
           <h1 className="mt-2 text-3xl font-extrabold leading-tight tracking-tight sm:text-5xl md:text-6xl text-white">
             {c.headline}
           </h1>
@@ -275,6 +281,24 @@ function LandingPageBlocks({
           </div>
         )}
       </Section>
+
+      {c.mechanism && (
+        <Section>
+          <div className="mx-auto max-w-3xl text-center">
+            <BlockBadge label="O MECANISMO ÚNICO" />
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-white">{c.mechanism.name}</h2>
+            <p className="mt-4 text-base sm:text-lg text-white/70 leading-relaxed">{c.mechanism.explanation}</p>
+            <div className="mt-8 grid gap-4 sm:grid-cols-3">
+              {c.mechanism.pillars.map((p, i) => (
+                <div key={i} className="rounded-2xl border border-emerald-500/30 bg-[#161b26] p-5">
+                  <div className="text-2xl font-extrabold text-emerald-400">{i + 1}</div>
+                  <p className="mt-2 text-sm font-semibold text-white">{p}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Section>
+      )}
 
       {/* BLOCO 4 - PASSO A PASSO */}
       <Section muted>
@@ -513,6 +537,23 @@ function LandingPageBlocks({
             }}
           />
         </div>
+
+        {c.offer && (
+          <div className="mx-auto mt-8 max-w-2xl rounded-2xl border border-emerald-500/30 bg-[#161b26] p-6 text-center">
+            <p className="text-lg sm:text-xl font-extrabold text-white">{c.offer.promise}</p>
+            <p className="mt-2 text-sm text-white/60">
+              De <span className="line-through">{c.completePlan.oldPrice}</span> por{' '}
+              <span className="font-bold text-emerald-400">{c.completePlan.price}</span>
+            </p>
+            <p className="mt-3 text-sm font-bold text-amber-300">⏰ {c.offer.reasonToBuyNow}</p>
+            <ul className="mt-4 space-y-1 text-left text-sm text-white/70">
+              {c.offer.objections.map((o, i) => (
+                <li key={i}>✅ {o}</li>
+              ))}
+            </ul>
+            <p className="mt-4 text-sm font-bold text-white">🛡️ {c.guaranteeTitle}</p>
+          </div>
+        )}
 
         {c.savings && (
           <p className="mt-6 text-center text-sm sm:text-base font-bold text-emerald-400">

@@ -609,6 +609,7 @@ export function generateFullCopyData(req: GenerateRequest, scrapedInfo?: { title
       : '🎉 Congratulations! Your details are confirmed. Check your inbox for instant access!',
     images: imageAssets,
     imagePrompts,
+    ...defaultFocus(lang, productName, audience),
   };
 
   // Cenario variant (with urgency bar and badges)
@@ -646,12 +647,14 @@ Sua missão é gerar a cópia completa da landing page abaixo, seguindo a estrut
 - **Preço Pacote Completo (VIP):** ${completePrice} (Valor de ancoragem: ${oldPriceComplete})
 - **Ângulo da Variação:** ${variant.name} (${variant.desc})
 
+${buildPrioritiesSection(contentDireto)}
 ---
 ### ESTRUTURA DOS 11 BLOCOS:
 
 #### BLOCO 1 - VENDER SOZINHO (Hero)
 - **Tag:** [BLOCO 1 - VENDER SOZINHO]
-- **Headline Principal:** Descubra como ${contentDireto.headline}
+- **Headline Principal:** ${contentDireto.headline}
+- **Selo do Mecanismo:** ${contentDireto.mechanism?.name ?? ''}
 - **Subheadline (Quebra de 3 Objeções):** ${contentDireto.subheadline}
 - **Botão CTA:** APROVEITAR AGORA
 - **🖼️ IMAGEM NECESSÁRIA (Hero):**
@@ -788,4 +791,75 @@ Sua missão é gerar a cópia completa da landing page abaixo, seguindo a estrut
     contentDireto,
     contentCenario,
   };
+}
+
+export function defaultFocus(lang: string, productName: string, audience: string) {
+  const pt = lang === 'pt';
+  const mechName = pt ? `Método ${productName.split(' ')[0]} 3P` : `${productName.split(' ')[0]} 3P Method`;
+  return {
+    headlineOptions: pt
+      ? [
+          `Descubra como dominar as vendas de ${productName} em poucos dias`,
+          `O atalho de ${productName} que faz ${audience.toLowerCase()} vender sem aparecer`,
+          `Pare de tentar do jeito difícil: o ${mechName} faz a venda acontecer em 3 passos`,
+        ]
+      : [
+          `Discover how to master sales for ${productName} in just a few days`,
+          `The ${productName} shortcut that lets you sell without showing up`,
+          `Stop doing it the hard way: the ${mechName} closes sales in 3 steps`,
+        ],
+    mechanism: {
+      name: mechName,
+      explanation: pt
+        ? `Em vez de depender de audiência, sorte ou horas de aula, o ${mechName} usa uma sequência pronta de Preparar, Publicar e Persuadir. É por isso que funciona mesmo para quem já tentou outros métodos e não teve resultado.`
+        : `Instead of relying on audience, luck or hours of classes, the ${mechName} uses a ready sequence: Prepare, Publish and Persuade. That's why it works even if other methods failed you.`,
+      pillars: pt
+        ? ['Preparar: oferta pronta em minutos', 'Publicar: página e mensagens prontas', 'Persuadir: gatilhos que fazem comprar']
+        : ['Prepare: ready offer in minutes', 'Publish: ready page and messages', 'Persuade: triggers that make people buy'],
+    },
+    offer: {
+      promise: pt
+        ? `Tenha sua primeira venda com o ${mechName} ou receba 100% do seu dinheiro de volta.`
+        : `Get your first sale with the ${mechName} or get 100% of your money back.`,
+      reasonToBuyNow: pt
+        ? 'Preço de lançamento válido só hoje — depois volta para o valor cheio.'
+        : 'Launch price valid today only — then it goes back to full price.',
+      objections: pt
+        ? ['Não tenho tempo: leva menos de 45 minutos', 'Não tenho seguidores: não precisa', 'E se não funcionar? Garantia de 7 dias']
+        : ['No time: takes under 45 minutes', 'No followers: not needed', "What if it doesn't work? 7-day guarantee"],
+    },
+  };
+}
+
+export function buildPrioritiesSection(c: LandingPageContent): string {
+  const h = (c.headlineOptions ?? [c.headline]).map((x, i) => `  ${i + 1}. ${x}`).join('\n');
+  const m = c.mechanism;
+  const o = c.offer;
+  return `<!--PRIORIDADES-->
+### PRIORIDADES DA COPY (FOCO MÁXIMO)
+**1. HEADLINE (escolhida):** ${c.headline}
+- Opções de headline:
+${h}
+
+**2. MECANISMO ÚNICO:** ${m?.name ?? ''}
+- Por que funciona e por que é diferente: ${m?.explanation ?? ''}
+- Pilares:
+${(m?.pillars ?? []).map((p) => `  - ${p}`).join('\n')}
+- Cite o mecanismo pelo nome em todos os blocos.
+
+**3. OFERTA PERSUASIVA:**
+- Promessa: ${o?.promise ?? ''}
+- Valor: de ${c.completePlan.oldPrice ?? ''} por ${c.completePlan.price}
+- Motivo para comprar agora: ${o?.reasonToBuyNow ?? ''}
+- Garantia: ${c.guaranteeTitle}
+- Quebra de objeções:
+${(o?.objections ?? []).map((p) => `  - ${p}`).join('\n')}
+<!--/PRIORIDADES-->
+`;
+}
+
+export function applyFocusToPrompt(prompt: string, c: LandingPageContent): string {
+  return prompt
+    .replace(/<!--PRIORIDADES-->[\s\S]*?<!--\/PRIORIDADES-->\n/, buildPrioritiesSection(c))
+    .replace(/- \*\*Headline Principal:\*\* .*\n- \*\*Selo do Mecanismo:\*\* .*/, `- **Headline Principal:** ${c.headline}\n- **Selo do Mecanismo:** ${c.mechanism?.name ?? ''}`);
 }
