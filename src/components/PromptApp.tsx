@@ -22,6 +22,7 @@ import {
   ELEVEN_BLOCKS,
   resolveTone,
   generateFullCopyData,
+  applyFocusToPrompt,
 } from '@/lib/promptEngine';
 import {
   LanguageKey,
