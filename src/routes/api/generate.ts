@@ -135,7 +135,7 @@ export const Route = createFileRoute("/api/generate")({
             if (enriched.headline) c.headline = enriched.headline;
             if (Array.isArray(enriched.headlineOptions) && enriched.headlineOptions.length >= 3) {
               c.headlineOptions = enriched.headlineOptions.slice(0, 3);
-              if (!enriched.headline) c.headline = c.headlineOptions[0];
+              if (!enriched.headline) c.headline = c.headlineOptions![0]!;
             }
             if (enriched.mechanism?.name) c.mechanism = { ...c.mechanism!, ...enriched.mechanism };
             if (enriched.offer?.promise) c.offer = { ...c.offer!, ...enriched.offer };
