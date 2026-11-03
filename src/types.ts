@@ -122,6 +122,9 @@ export interface LandingPageContent {
   };
   thankYou: string;
   images: LandingPageImageSet;
+  headlineOptions?: string[];
+  mechanism?: { name: string; explanation: string; pillars: string[] };
+  offer?: { promise: string; reasonToBuyNow: string; objections: string[] };
   imagePrompts?: {
     hero: string;
     depoimentos: string;
