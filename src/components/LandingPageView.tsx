@@ -36,7 +36,7 @@ export function LandingPageView({
   return (
     <div
       dir={isArabic ? 'rtl' : 'ltr'}
-      className="min-h-screen bg-[#4A0A0A] text-[#f1f3f7] selection:bg-emerald-500 selection:text-black font-sans antialiased"
+      className="lp-experience min-h-screen bg-[#4A0A0A] text-[#f1f3f7] selection:bg-emerald-500 selection:text-black font-sans antialiased"
     >
       {/* Top Preview Banner (if back handler is present) */}
       {onBack && (
