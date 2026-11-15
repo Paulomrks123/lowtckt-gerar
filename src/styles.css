@@ -1068,3 +1068,97 @@ main.min-h-screen textarea {
     letter-spacing: .06em;
   }
 }
+
+
+/* TEXT VISIBILITY FIX — prevent headings and copy from being clipped */
+.lp-experience,
+.lp-experience header,
+.lp-experience section,
+.lp-experience footer {
+  overflow: visible;
+}
+
+.lp-experience > header {
+  overflow: hidden;
+  min-height: 0;
+  padding-top: clamp(3.25rem, 7vw, 6rem);
+  padding-bottom: clamp(3rem, 7vw, 5rem);
+}
+
+.lp-experience > header h1,
+.lp-experience section h2,
+.lp-experience section h3,
+.lp-experience p,
+.lp-experience li,
+.lp-experience span,
+.lp-experience summary,
+.lp-experience footer,
+.lp-experience button {
+  min-width: 0;
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  text-overflow: clip;
+}
+
+.lp-experience > header h1 {
+  line-height: 1.16 !important;
+  padding: .08em .04em .16em;
+  overflow: visible;
+  text-wrap: pretty;
+}
+
+.lp-experience section h2 {
+  line-height: 1.2 !important;
+  padding-block: .06em .12em;
+  overflow: visible;
+  text-wrap: pretty;
+}
+
+.lp-experience section h3 {
+  line-height: 1.3;
+}
+
+.lp-experience section .grid > *,
+.lp-experience section .grid > * > *,
+.lp-experience section .divide-y > div > * {
+  min-width: 0;
+}
+
+.lp-experience section .flex.items-baseline {
+  flex-wrap: wrap;
+}
+
+.lp-experience section [class*="line-through"] {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 640px) {
+  .lp-experience > header {
+    padding: 3rem 1rem 2.75rem;
+  }
+
+  .lp-experience > header h1 {
+    font-size: clamp(1.9rem, 8.5vw, 3.1rem);
+    line-height: 1.18 !important;
+    letter-spacing: -.035em;
+  }
+
+  .lp-experience section h2 {
+    font-size: clamp(1.55rem, 7vw, 2.25rem);
+    line-height: 1.22 !important;
+    letter-spacing: -.025em;
+  }
+
+  .lp-experience section .grid > div {
+    height: auto;
+    min-height: 0;
+  }
+
+  .lp-experience section .divide-y > div {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+}
