@@ -43,7 +43,7 @@ export function SettingsMenu() {
         <div className="fixed inset-0 z-50 flex justify-end bg-black/60" onClick={() => setOpen(false)}>
           <aside
             onClick={(e) => e.stopPropagation()}
-            className="h-full w-[85vw] max-w-sm overflow-y-auto border-l border-white/10 bg-[#11151c] p-5 text-left text-white"
+            className="h-full w-[85vw] max-w-sm overflow-y-auto border-l border-white/10 bg-[#4A0A0A] p-5 text-left text-white"
           >
             <div className="mb-6 flex items-center justify-between">
               <h2 className="text-lg font-bold">Menu</h2>
@@ -54,7 +54,7 @@ export function SettingsMenu() {
             <div className="flex items-center gap-2 font-semibold">
               <KeyRound className="h-4 w-4 text-emerald-400" /> Chave API da OpenAI
             </div>
-            <p className="mt-2 text-sm text-white/60">
+            <p className="mt-2 text-sm text-white/70">
               Use sua própria chave quando os créditos de IA da Lovable acabarem. Ela fica salva só neste navegador.
             </p>
             <input
@@ -74,7 +74,7 @@ export function SettingsMenu() {
                 </button>
               )}
             </div>
-            <p className="mt-3 text-xs text-white/50">{saved ? '✓ Chave salva' : 'Nenhuma chave salva'}</p>
+            <p className="mt-3 text-xs text-white/70">{saved ? '✓ Chave salva' : 'Nenhuma chave salva'}</p>
             <a href="https://platform.openai.com/api-keys" target="_blank" rel="noreferrer" className="mt-4 inline-block text-xs text-emerald-400 underline">
               Obter uma chave na OpenAI
             </a>
