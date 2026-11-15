@@ -1162,3 +1162,60 @@ main.min-h-screen textarea {
     align-items: flex-start;
   }
 }
+
+
+/* Full labels for the 11-block overview — never ellipsize these descriptions. */
+main.min-h-screen section.grid > div {
+  align-items: flex-start;
+  min-width: 0;
+  height: auto;
+  overflow: visible;
+}
+
+main.min-h-screen section.grid > div > span:last-child {
+  display: block;
+  flex: 1 1 0%;
+  min-width: 0;
+  white-space: normal !important;
+  overflow: visible !important;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  text-overflow: clip !important;
+  line-height: 1.4;
+}
+
+/* Hide the editor attribution badge when it is injected into the preview DOM. */
+#lovable-badge,
+lovable-badge,
+[data-lovable-badge],
+iframe#lovable-badge {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+@media (max-width: 639px) {
+  main.min-h-screen section.grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: .65rem;
+  }
+
+  main.min-h-screen section.grid > div {
+    width: 100%;
+    padding: .9rem 1rem;
+    gap: .75rem;
+    border-radius: 14px;
+  }
+
+  main.min-h-screen section.grid > div > span:first-child {
+    flex: 0 0 1.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  main.min-h-screen section.grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
