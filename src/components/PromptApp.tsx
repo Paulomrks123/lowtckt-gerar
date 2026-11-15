@@ -628,7 +628,7 @@ function AppContent() {
               <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-emerald-500/20 text-xs font-bold text-emerald-400">
                 {idx + 1}
               </span>
-              <span className="truncate">{blockName}</span>
+              <span className="min-w-0 flex-1 whitespace-normal break-words leading-snug">{blockName}</span>
             </div>
           ))}
         </section>
