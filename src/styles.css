@@ -709,3 +709,312 @@ main.min-h-screen a:focus-visible,
     animation-iteration-count: 1 !important;
   }
 }
+
+
+/* RESPONSIVE ALIGNMENT — mobile first, centered on every viewport */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  scroll-padding-top: 1rem;
+}
+
+body, #root {
+  width: 100%;
+  min-width: 320px;
+  max-width: 100%;
+  margin-inline: auto;
+}
+
+#root {
+  overflow-x: clip;
+}
+
+main.min-h-screen,
+.lp-experience {
+  width: 100%;
+  max-width: 100%;
+  margin-inline: auto;
+  overflow-x: clip;
+}
+
+main.min-h-screen > .relative.mx-auto {
+  width: min(100% - 2rem, 1120px);
+  margin-inline: auto;
+}
+
+main.min-h-screen header.text-center,
+.lp-experience > header,
+.lp-experience section > div,
+.lp-experience footer > div {
+  margin-inline: auto;
+}
+
+main.min-h-screen form.mt-10 {
+  width: 100%;
+  margin-inline: auto;
+}
+
+main.min-h-screen form.mt-10 > *,
+.lp-experience section > div > * {
+  min-width: 0;
+}
+
+.lp-experience > header > div,
+.lp-experience section > div {
+  width: min(100%, 1024px);
+  margin-inline: auto;
+}
+
+.lp-experience section {
+  width: 100%;
+  padding-inline: clamp(1rem, 4vw, 2rem);
+}
+
+.lp-experience section h2,
+.lp-experience section h3,
+.lp-experience > header h1,
+.lp-experience > header p {
+  margin-inline: auto;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.lp-experience section .grid {
+  justify-items: stretch;
+  align-items: stretch;
+}
+
+.lp-experience section .grid > div {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.lp-experience img,
+main.min-h-screen img {
+  max-width: 100%;
+  height: auto;
+}
+
+.lp-experience button,
+main.min-h-screen button {
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+main.min-h-screen input,
+main.min-h-screen select,
+main.min-h-screen textarea,
+.lp-experience input,
+.lp-experience select,
+.lp-experience textarea {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+
+@media (max-width: 640px) {
+  main.min-h-screen > .relative.mx-auto {
+    width: min(100% - 1.25rem, 540px);
+    padding-top: 3.75rem;
+    padding-bottom: 2.5rem;
+  }
+
+  main.min-h-screen header.text-center {
+    width: 100%;
+    padding: 1rem .25rem 1.5rem;
+    text-align: center;
+  }
+
+  main.min-h-screen header.text-center h1 {
+    max-width: 100%;
+    font-size: clamp(2rem, 9.5vw, 3.25rem);
+    line-height: 1.06;
+    overflow-wrap: anywhere;
+  }
+
+  main.min-h-screen header.text-center p {
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  main.min-h-screen form.mt-10 {
+    width: 100%;
+    max-width: 540px;
+    margin: 1.5rem auto 0;
+    padding: clamp(1rem, 4vw, 1.35rem);
+    border-radius: 20px;
+  }
+
+  main.min-h-screen form.mt-10 .grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  main.min-h-screen form.mt-10 button,
+  main.min-h-screen form.mt-10 input {
+    min-height: 46px;
+  }
+
+  .lp-experience > header {
+    min-height: auto;
+    padding: 5.25rem 1rem 3.5rem;
+    text-align: center;
+  }
+
+  .lp-experience > header::before {
+    top: 1.65rem;
+    width: calc(100% - 2rem);
+    text-align: center;
+    font-size: clamp(.45rem, 2vw, .58rem);
+    letter-spacing: .12em;
+  }
+
+  .lp-experience > header > div {
+    width: 100%;
+  }
+
+  .lp-experience > header h1 {
+    font-size: clamp(2rem, 9vw, 3.5rem);
+    line-height: 1.06;
+  }
+
+  .lp-experience > header p {
+    max-width: 36rem;
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .lp-experience > header button,
+  .lp-experience section button[class*="bg-gradient-to-r"],
+  .lp-experience #form-lead button[type="submit"] {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .lp-experience section {
+    padding: 3.25rem 1rem;
+  }
+
+  .lp-experience section > div {
+    width: 100%;
+    max-width: 540px;
+    margin-inline: auto;
+  }
+
+  .lp-experience section .grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 1rem;
+  }
+
+  .lp-experience section .grid > div {
+    width: 100%;
+    text-align: center;
+  }
+
+  .lp-experience section h2 {
+    font-size: clamp(1.75rem, 7.5vw, 2.5rem);
+  }
+
+  .lp-experience section p {
+    overflow-wrap: anywhere;
+  }
+
+  .lp-experience section ul {
+    text-align: left;
+  }
+
+  .lp-experience section [class*="flex-row"] {
+    flex-wrap: wrap;
+  }
+
+  .lp-experience #form-lead {
+    width: 100%;
+    max-width: 480px;
+    margin-inline: auto;
+    padding: 1.15rem;
+  }
+
+  .lp-experience #form-lead .grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .lp-experience footer {
+    padding-inline: 1rem;
+    text-align: center;
+  }
+
+  .lp-experience footer > div {
+    width: 100%;
+    max-width: 540px;
+    margin-inline: auto;
+    overflow-wrap: anywhere;
+  }
+
+  /* Preview toolbar: prevent long labels from pushing the viewport */
+  .lp-experience > div.sticky {
+    gap: .75rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .lp-experience > div.sticky > span {
+    max-width: 100%;
+    text-align: center;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  main.min-h-screen > .relative.mx-auto {
+    width: min(100% - 3rem, 900px);
+  }
+
+  main.min-h-screen form.mt-10 {
+    width: 100%;
+  }
+
+  .lp-experience > header {
+    min-height: auto;
+    padding: 6rem 2rem 4.5rem;
+  }
+
+  .lp-experience section {
+    padding-inline: clamp(1.5rem, 4vw, 2.5rem);
+  }
+
+  .lp-experience section > div {
+    width: 100%;
+    max-width: 900px;
+    margin-inline: auto;
+  }
+}
+
+@media (min-width: 1025px) {
+  main.min-h-screen > .relative.mx-auto {
+    width: min(100% - 4rem, 1120px);
+  }
+
+  .lp-experience section > div {
+    max-width: 1024px;
+  }
+}
+
+@media (max-width: 360px) {
+  main.min-h-screen > .relative.mx-auto {
+    width: calc(100% - 1rem);
+  }
+
+  .lp-experience section {
+    padding-inline: .75rem;
+  }
+
+  .lp-experience #form-lead {
+    padding: .9rem;
+  }
+
+  .lp-experience > header::before {
+    letter-spacing: .08em;
+  }
+}
