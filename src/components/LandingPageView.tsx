@@ -36,11 +36,11 @@ export function LandingPageView({
   return (
     <div
       dir={isArabic ? 'rtl' : 'ltr'}
-      className="min-h-screen bg-[#0d1015] text-[#f1f3f7] selection:bg-emerald-500 selection:text-black font-sans antialiased"
+      className="min-h-screen bg-[#4A0A0A] text-[#f1f3f7] selection:bg-emerald-500 selection:text-black font-sans antialiased"
     >
       {/* Top Preview Banner (if back handler is present) */}
       {onBack && (
-        <div className="sticky top-0 z-50 flex items-center justify-between border-b border-white/10 bg-[#12161f]/95 px-4 py-2.5 backdrop-blur">
+        <div className="sticky top-0 z-50 flex items-center justify-between border-b border-white/10 bg-[#571010]/95 px-4 py-2.5 backdrop-blur">
           <button
             onClick={onBack}
             className="flex items-center gap-2 text-sm font-semibold text-emerald-400 hover:text-emerald-300 transition-colors"
@@ -103,7 +103,7 @@ function Section({
     <section
       id={id}
       className={`px-5 py-16 sm:py-20 border-b border-white/5 ${
-        muted ? 'bg-[#121620]' : 'bg-[#0d1015]'
+        muted ? 'bg-[#551010]' : 'bg-[#4A0A0A]'
       }`}
     >
       <div className="mx-auto max-w-5xl">{children}</div>
@@ -124,7 +124,7 @@ function LandingPageBlocks({
     <>
       {/* BLOCO 1 - VENDER SOZINHO (Hero) */}
       <header className="relative px-5 pt-12 pb-16 sm:pb-24 text-center overflow-hidden border-b border-white/5">
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-96 bg-[radial-gradient(ellipse_at_top,rgba(16,185,129,0.18),transparent_70%)]" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-96 bg-[radial-gradient(ellipse_at_top,rgba(255,132,80,0.20),transparent_70%)]" />
 
         <div className="relative mx-auto max-w-4xl">
           {/* Logo */}
@@ -204,7 +204,7 @@ function LandingPageBlocks({
           {c.testimonials.map((t, idx) => (
             <div
               key={idx}
-              className="rounded-2xl border border-white/10 bg-[#161b26] p-5 shadow-lg flex flex-col justify-between"
+              className="rounded-2xl border border-white/10 bg-[#5E1212] p-5 shadow-lg flex flex-col justify-between"
             >
               {t.image && (
                 <div className="mb-4 overflow-hidden rounded-xl border border-white/10 bg-black/40">
@@ -250,7 +250,7 @@ function LandingPageBlocks({
           {(c.painThoughts || []).map((pt, idx) => (
             <div
               key={idx}
-              className="rounded-2xl border border-rose-500/20 bg-[#161a24] p-5 shadow-md flex items-start gap-4"
+              className="rounded-2xl border border-rose-500/20 bg-[#5A1010] p-5 shadow-md flex items-start gap-4"
             >
               {pt.image && (
                 <img
@@ -273,7 +273,7 @@ function LandingPageBlocks({
         </div>
 
         {c.painClosing && (
-          <div className="mt-10 mx-auto max-w-2xl rounded-2xl border border-white/10 bg-[#161b26] p-6 text-center shadow-lg">
+          <div className="mt-10 mx-auto max-w-2xl rounded-2xl border border-white/10 bg-[#5E1212] p-6 text-center shadow-lg">
             <h3 className="text-lg sm:text-xl font-bold text-white">Eu sei...</h3>
             <p className="mt-2 text-sm sm:text-base text-emerald-400 font-semibold">
               {c.painClosing}
@@ -290,7 +290,7 @@ function LandingPageBlocks({
             <p className="mt-4 text-base sm:text-lg text-white/70 leading-relaxed">{c.mechanism.explanation}</p>
             <div className="mt-8 grid gap-4 sm:grid-cols-3">
               {c.mechanism.pillars.map((p, i) => (
-                <div key={i} className="rounded-2xl border border-emerald-500/30 bg-[#161b26] p-5">
+                <div key={i} className="rounded-2xl border border-emerald-500/30 bg-[#5E1212] p-5">
                   <div className="text-2xl font-extrabold text-emerald-400">{i + 1}</div>
                   <p className="mt-2 text-sm font-semibold text-white">{p}</p>
                 </div>
@@ -316,7 +316,7 @@ function LandingPageBlocks({
           {c.steps.map((st, idx) => (
             <div
               key={idx}
-              className="rounded-2xl border border-white/10 bg-[#161b26] p-5 shadow-lg flex flex-col justify-between"
+              className="rounded-2xl border border-white/10 bg-[#5E1212] p-5 shadow-lg flex flex-col justify-between"
             >
               {st.image && (
                 <div className="mb-4 overflow-hidden rounded-xl border border-white/10 bg-black/40">
@@ -358,7 +358,7 @@ function LandingPageBlocks({
           {c.deliverables.map((del, idx) => (
             <div
               key={idx}
-              className="rounded-2xl border border-white/10 bg-[#161b26] p-6 shadow-xl flex flex-col justify-between hover:border-emerald-500/50 transition-colors"
+              className="rounded-2xl border border-white/10 bg-[#5E1212] p-6 shadow-xl flex flex-col justify-between hover:border-emerald-500/50 transition-colors"
             >
               {del.image && (
                 <div className="mb-5 overflow-hidden rounded-xl border border-white/10 bg-black/40">
@@ -400,7 +400,7 @@ function LandingPageBlocks({
           {c.extras.map((ex, idx) => (
             <div
               key={idx}
-              className="relative rounded-2xl border-2 border-emerald-500/30 bg-[#161b26] p-6 shadow-xl flex flex-col justify-between"
+              className="relative rounded-2xl border-2 border-emerald-500/30 bg-[#5E1212] p-6 shadow-xl flex flex-col justify-between"
             >
               {ex.value && (
                 <span className="absolute -top-3 right-4 rounded-full bg-emerald-500 px-3 py-0.5 text-xs font-black uppercase text-black shadow">
@@ -442,7 +442,7 @@ function LandingPageBlocks({
 
         <div className="mt-10 grid gap-6 sm:grid-cols-2">
           {/* Não é pra você que */}
-          <div className="rounded-2xl border border-rose-500/30 bg-[#191316] p-6 shadow-lg">
+          <div className="rounded-2xl border border-rose-500/30 bg-[#5A1010] p-6 shadow-lg">
             <h3 className="text-lg font-bold text-rose-400 flex items-center gap-2 mb-4">
               <X className="h-5 w-5" />
               Não é pra você que:
@@ -484,7 +484,7 @@ function LandingPageBlocks({
           </h2>
         </div>
 
-        <div className="mx-auto mt-8 max-w-xl rounded-2xl border border-white/10 bg-[#161b26] p-6 shadow-xl">
+        <div className="mx-auto mt-8 max-w-xl rounded-2xl border border-white/10 bg-[#5E1212] p-6 shadow-xl">
           <div className="divide-y divide-white/10">
             {(c.stackItems || []).map((item, idx) => (
               <div key={idx} className="py-3 flex justify-between items-center text-sm">
@@ -539,7 +539,7 @@ function LandingPageBlocks({
         </div>
 
         {c.offer && (
-          <div className="mx-auto mt-8 max-w-2xl rounded-2xl border border-emerald-500/30 bg-[#161b26] p-6 text-center">
+          <div className="mx-auto mt-8 max-w-2xl rounded-2xl border border-emerald-500/30 bg-[#5E1212] p-6 text-center">
             <p className="text-lg sm:text-xl font-extrabold text-white">{c.offer.promise}</p>
             <p className="mt-2 text-sm text-white/60">
               De <span className="line-through">{c.completePlan.oldPrice}</span> por{' '}
@@ -571,7 +571,7 @@ function LandingPageBlocks({
           <BlockBadge label="BLOCO 10 - AUTORIDADE" />
         </div>
 
-        <div className="mx-auto max-w-3xl rounded-2xl border border-white/10 bg-[#161b26] p-6 sm:p-8 shadow-xl flex flex-col sm:flex-row items-center gap-6">
+        <div className="mx-auto max-w-3xl rounded-2xl border border-white/10 bg-[#5E1212] p-6 sm:p-8 shadow-xl flex flex-col sm:flex-row items-center gap-6">
           <div className="h-28 w-28 sm:h-32 sm:w-32 rounded-2xl overflow-hidden border-2 border-emerald-500/40 bg-black/40 shrink-0">
             <img
               src={c.images.authorImage || c.images.heroMockup}
@@ -608,7 +608,7 @@ function LandingPageBlocks({
           {c.faq.map((item, idx) => (
             <details
               key={idx}
-              className="group rounded-xl border border-white/10 bg-[#161b26] p-4.5 shadow-sm"
+              className="group rounded-xl border border-white/10 bg-[#5E1212] p-4.5 shadow-sm"
             >
               <summary className="cursor-pointer font-bold list-none flex items-center justify-between text-white text-base">
                 <span>{item.q}</span>
@@ -637,7 +637,7 @@ function LandingPageBlocks({
       </Section>
 
       {/* Rodapé Legal */}
-      <footer className="border-t border-white/5 bg-[#090b0e] px-5 py-10 text-center text-xs text-white/40 leading-relaxed">
+      <footer className="border-t border-white/5 bg-[#380707] px-5 py-10 text-center text-xs text-white/40 leading-relaxed">
         <div className="mx-auto max-w-3xl whitespace-pre-line">
           {c.footer}
         </div>
@@ -660,7 +660,7 @@ function PricingCard({
       className={`relative rounded-2xl p-7 sm:p-8 flex flex-col justify-between transition-all ${
         isPopular
           ? 'border-2 border-emerald-400 bg-gradient-to-b from-[#18231f] to-[#141b18] shadow-[0_15px_40px_rgba(16,185,129,0.2)] scale-[1.02]'
-          : 'border border-white/10 bg-[#161b26] shadow-lg'
+          : 'border border-white/10 bg-[#5E1212] shadow-lg'
       }`}
     >
       {isPopular && (
@@ -754,7 +754,7 @@ function LeadOrderForm({
   return (
     <div
       id="form-lead"
-      className="mx-auto mt-12 max-w-lg rounded-2xl border border-white/10 bg-[#161b26] p-6 sm:p-8 shadow-2xl"
+      className="mx-auto mt-12 max-w-lg rounded-2xl border border-white/10 bg-[#5E1212] p-6 sm:p-8 shadow-2xl"
     >
       {submitted ? (
         <div className="py-8 text-center">
@@ -776,7 +776,7 @@ function LeadOrderForm({
             required
             maxLength={120}
             placeholder={c.labels?.name || 'Seu nome completo'}
-            className="flex h-12 w-full rounded-xl border border-white/10 bg-[#0d1015] px-4 py-2 text-sm text-white placeholder:text-white/40 focus:border-emerald-500 focus:outline-none"
+            className="flex h-12 w-full rounded-xl border border-white/10 bg-[#4A0A0A] px-4 py-2 text-sm text-white placeholder:text-white/40 focus:border-emerald-500 focus:outline-none"
           />
 
           <input
@@ -785,14 +785,14 @@ function LeadOrderForm({
             required
             maxLength={200}
             placeholder={c.labels?.email || 'Seu melhor e-mail'}
-            className="flex h-12 w-full rounded-xl border border-white/10 bg-[#0d1015] px-4 py-2 text-sm text-white placeholder:text-white/40 focus:border-emerald-500 focus:outline-none"
+            className="flex h-12 w-full rounded-xl border border-white/10 bg-[#4A0A0A] px-4 py-2 text-sm text-white placeholder:text-white/40 focus:border-emerald-500 focus:outline-none"
           />
 
           <input
             name="phone"
             maxLength={40}
             placeholder={c.labels?.phone || 'WhatsApp com DDD'}
-            className="flex h-12 w-full rounded-xl border border-white/10 bg-[#0d1015] px-4 py-2 text-sm text-white placeholder:text-white/40 focus:border-emerald-500 focus:outline-none"
+            className="flex h-12 w-full rounded-xl border border-white/10 bg-[#4A0A0A] px-4 py-2 text-sm text-white placeholder:text-white/40 focus:border-emerald-500 focus:outline-none"
           />
 
           <div className="grid grid-cols-2 gap-2 pt-1">

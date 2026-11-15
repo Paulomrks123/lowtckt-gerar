@@ -43,7 +43,7 @@ export function SettingsMenu() {
         <div className="fixed inset-0 z-50 flex justify-end bg-black/60" onClick={() => setOpen(false)}>
           <aside
             onClick={(e) => e.stopPropagation()}
-            className="h-full w-[85vw] max-w-sm overflow-y-auto border-l border-white/10 bg-[#11151c] p-5 text-left text-white"
+            className="h-full w-[85vw] max-w-sm overflow-y-auto border-l border-white/10 bg-[#4A0A0A] p-5 text-left text-white"
           >
             <div className="mb-6 flex items-center justify-between">
               <h2 className="text-lg font-bold">Menu</h2>

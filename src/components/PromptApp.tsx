@@ -362,7 +362,7 @@ function AppContent() {
   if (currentPath.startsWith('/p/')) {
     if (loadingPage) {
       return (
-        <div className="flex min-h-screen items-center justify-center bg-[#0d1015] text-white">
+        <div className="flex min-h-screen items-center justify-center bg-[#4A0A0A] text-white">
           <Loader2 className="h-8 w-8 animate-spin text-emerald-400" />
         </div>
       );
@@ -381,7 +381,7 @@ function AppContent() {
     }
 
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center bg-[#0d1015] px-4 text-center text-white">
+      <div className="flex min-h-screen flex-col items-center justify-center bg-[#4A0A0A] px-4 text-center text-white">
         <h2 className="text-2xl font-bold">Página não encontrada</h2>
         <p className="mt-2 text-white/60">
           A página solicitada não existe ou expirou.
@@ -398,9 +398,9 @@ function AppContent() {
 
   // Generator View
   return (
-    <main className="relative min-h-screen w-full max-w-[100vw] overflow-x-hidden bg-[#0d1015] text-[#f1f3f7] selection:bg-emerald-500 selection:text-black">
+    <main className="relative min-h-screen w-full max-w-[100vw] overflow-x-hidden bg-[#4A0A0A] text-[#f1f3f7] selection:bg-emerald-500 selection:text-black">
       {/* Ambient background glow */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-[450px] bg-[radial-gradient(ellipse_at_top,rgba(16,185,129,0.18),transparent_70%)]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[450px] bg-[radial-gradient(ellipse_at_top,rgba(255,132,80,0.20),transparent_70%)]" />
 
       <SettingsMenu />
       <div className="relative mx-auto w-full max-w-5xl px-4 py-14 text-center sm:px-5 sm:py-18 sm:text-left">
@@ -431,7 +431,7 @@ function AppContent() {
         {/* Input Form */}
         <form
           onSubmit={handleGenerate}
-          className="mt-10 rounded-2xl border border-white/10 bg-[#161b26] p-5 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.8)] sm:p-7"
+          className="mt-10 rounded-2xl border border-white/10 bg-[#5E1212] p-5 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.8)] sm:p-7"
         >
           {/* URL da oferta */}
           <label htmlFor="url" className="text-sm font-semibold text-white">
@@ -444,7 +444,7 @@ function AppContent() {
               value={url}
               onChange={(e) => setUrl(e.target.value)}
               placeholder="https://minhaoferta.com/produto"
-              className="h-12 w-full rounded-xl border border-white/10 bg-[#0d1015] pl-9 pr-4 text-base text-white shadow-sm transition-colors placeholder:text-white/40 focus:border-emerald-500 focus:outline-none"
+              className="h-12 w-full rounded-xl border border-white/10 bg-[#4A0A0A] pl-9 pr-4 text-base text-white shadow-sm transition-colors placeholder:text-white/40 focus:border-emerald-500 focus:outline-none"
               inputMode="url"
             />
           </div>
@@ -521,7 +521,7 @@ function AppContent() {
                 value={customTone}
                 onChange={(e) => setCustomTone(e.target.value)}
                 placeholder="Descreva o tom: curto, direto, provocativo e acolhedor"
-                className="mt-3 h-11 w-full rounded-xl border border-white/10 bg-[#0d1015] px-3.5 py-1 text-sm text-white placeholder:text-white/40 focus:border-emerald-500 focus:outline-none"
+                className="mt-3 h-11 w-full rounded-xl border border-white/10 bg-[#4A0A0A] px-3.5 py-1 text-sm text-white placeholder:text-white/40 focus:border-emerald-500 focus:outline-none"
               />
             ) : (
               <p className="mt-2 text-xs text-white/50">
@@ -544,7 +544,7 @@ function AppContent() {
                 value={productName}
                 onChange={(e) => setProductName(e.target.value)}
                 placeholder="Método Vender Sozinho"
-                className="mt-2 h-11 w-full rounded-xl border border-white/10 bg-[#0d1015] px-3.5 py-1 text-sm text-white shadow-sm placeholder:text-white/40 focus:border-emerald-500 focus:outline-none"
+                className="mt-2 h-11 w-full rounded-xl border border-white/10 bg-[#4A0A0A] px-3.5 py-1 text-sm text-white shadow-sm placeholder:text-white/40 focus:border-emerald-500 focus:outline-none"
               />
             </div>
             <div>
@@ -559,7 +559,7 @@ function AppContent() {
                 value={basicPrice}
                 onChange={(e) => setBasicPrice(e.target.value)}
                 placeholder="R$ 27,00"
-                className="mt-2 h-11 w-full rounded-xl border border-white/10 bg-[#0d1015] px-3.5 py-1 text-sm text-white shadow-sm placeholder:text-white/40 focus:border-emerald-500 focus:outline-none"
+                className="mt-2 h-11 w-full rounded-xl border border-white/10 bg-[#4A0A0A] px-3.5 py-1 text-sm text-white shadow-sm placeholder:text-white/40 focus:border-emerald-500 focus:outline-none"
               />
             </div>
             <div>
@@ -574,7 +574,7 @@ function AppContent() {
                 value={completePrice}
                 onChange={(e) => setCompletePrice(e.target.value)}
                 placeholder="R$ 47,00"
-                className="mt-2 h-11 w-full rounded-xl border border-white/10 bg-[#0d1015] px-3.5 py-1 text-sm text-white shadow-sm placeholder:text-white/40 focus:border-emerald-500 focus:outline-none"
+                className="mt-2 h-11 w-full rounded-xl border border-white/10 bg-[#4A0A0A] px-3.5 py-1 text-sm text-white shadow-sm placeholder:text-white/40 focus:border-emerald-500 focus:outline-none"
               />
             </div>
             <div>
@@ -589,7 +589,7 @@ function AppContent() {
                 value={audience}
                 onChange={(e) => setAudience(e.target.value)}
                 placeholder="Empreendedores iniciantes sem tempo"
-                className="mt-2 h-11 w-full rounded-xl border border-white/10 bg-[#0d1015] px-3.5 py-1 text-sm text-white shadow-sm placeholder:text-white/40 focus:border-emerald-500 focus:outline-none"
+                className="mt-2 h-11 w-full rounded-xl border border-white/10 bg-[#4A0A0A] px-3.5 py-1 text-sm text-white shadow-sm placeholder:text-white/40 focus:border-emerald-500 focus:outline-none"
               />
             </div>
           </div>
@@ -623,7 +623,7 @@ function AppContent() {
           {ELEVEN_BLOCKS.map((blockName, idx) => (
             <div
               key={idx}
-              className="flex items-center gap-2.5 rounded-xl border border-white/5 bg-[#161b26]/70 p-3 text-xs sm:text-sm text-white/60 shadow-sm"
+              className="flex items-center gap-2.5 rounded-xl border border-white/5 bg-[#5E1212]/70 p-3 text-xs sm:text-sm text-white/60 shadow-sm"
             >
               <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-emerald-500/20 text-xs font-bold text-emerald-400">
                 {idx + 1}
@@ -635,7 +635,7 @@ function AppContent() {
 
         {/* Generated Result Section */}
         {generatedData && (
-          <section className="mt-10 rounded-2xl border border-white/10 bg-[#161b26] p-5 sm:p-7 shadow-2xl">
+          <section className="mt-10 rounded-2xl border border-white/10 bg-[#5E1212] p-5 sm:p-7 shadow-2xl">
             {/* Header / Tabs */}
             <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-5">
               <div>
@@ -648,7 +648,7 @@ function AppContent() {
               </div>
 
               {/* View Switcher Tabs */}
-              <div className="flex rounded-xl bg-[#0d1015] p-1 border border-white/10">
+              <div className="flex rounded-xl bg-[#4A0A0A] p-1 border border-white/10">
                 <button
                   type="button"
                   onClick={() => setActiveTab('prompt')}
@@ -773,7 +773,7 @@ function AppContent() {
                 )}
                 <button
                   onClick={handleCopyCurrent}
-                  className="inline-flex items-center rounded-xl border border-white/10 bg-[#1f2636] px-3.5 py-2 text-xs font-bold text-white hover:bg-white/10 transition-colors cursor-pointer"
+                  className="inline-flex items-center rounded-xl border border-white/10 bg-[#711818] px-3.5 py-2 text-xs font-bold text-white hover:bg-white/10 transition-colors cursor-pointer"
                 >
                   {copiedPrompt ? (
                     <Check className="mr-1.5 h-3.5 w-3.5 text-emerald-400" />
@@ -785,7 +785,7 @@ function AppContent() {
                 {models.length > 1 && (
                   <button
                     onClick={handleCopyAllModels}
-                    className="inline-flex items-center rounded-xl border border-white/10 bg-[#1f2636] px-3.5 py-2 text-xs font-bold text-white hover:bg-white/10 transition-colors cursor-pointer"
+                    className="inline-flex items-center rounded-xl border border-white/10 bg-[#711818] px-3.5 py-2 text-xs font-bold text-white hover:bg-white/10 transition-colors cursor-pointer"
                   >
                     <Copy className="mr-1.5 h-3.5 w-3.5" />
                     Copiar os 2 Modelos
@@ -844,14 +844,14 @@ function AppContent() {
                           navigator.clipboard.writeText(fullUrl);
                           toast.success('Link copiado!');
                         }}
-                        className="p-1.5 rounded-lg border border-white/10 bg-[#161b26] hover:bg-white/10 text-white/70 hover:text-white transition-colors cursor-pointer"
+                        className="p-1.5 rounded-lg border border-white/10 bg-[#5E1212] hover:bg-white/10 text-white/70 hover:text-white transition-colors cursor-pointer"
                         title="Copiar link"
                       >
                         <Copy className="h-3.5 w-3.5" />
                       </button>
                       <button
                         onClick={() => navigateTo(`/p/${item.slug}`)}
-                        className="p-1.5 rounded-lg border border-white/10 bg-[#161b26] hover:bg-white/10 text-white/70 hover:text-white transition-colors cursor-pointer"
+                        className="p-1.5 rounded-lg border border-white/10 bg-[#5E1212] hover:bg-white/10 text-white/70 hover:text-white transition-colors cursor-pointer"
                         title="Abrir página"
                       >
                         <ExternalLink className="h-3.5 w-3.5" />
@@ -870,7 +870,7 @@ function AppContent() {
                     {variants.map((v) => (
                       <div
                         key={v.id}
-                        className="rounded-xl border border-white/10 bg-[#0d1015] shadow-inner"
+                        className="rounded-xl border border-white/10 bg-[#4A0A0A] shadow-inner"
                       >
                         <div className="flex items-center justify-between border-b border-white/10 px-4 py-2.5">
                           <span className="text-xs font-bold text-emerald-400">{v.label}</span>
@@ -897,7 +897,7 @@ function AppContent() {
                 ) : (
                   <pre
                     dir={generatedData.language === 'ar' ? 'rtl' : 'ltr'}
-                    className="max-h-[560px] overflow-auto whitespace-pre-wrap rounded-xl border border-white/10 bg-[#0d1015] p-4 text-xs sm:text-sm leading-relaxed text-white/90 font-mono shadow-inner"
+                    className="max-h-[560px] overflow-auto whitespace-pre-wrap rounded-xl border border-white/10 bg-[#4A0A0A] p-4 text-xs sm:text-sm leading-relaxed text-white/90 font-mono shadow-inner"
                   >
                     {currentPrompt}
                   </pre>
@@ -916,7 +916,7 @@ function AppContent() {
                 </div>
 
                 {/* Hero Mockup */}
-                <div className="rounded-2xl border border-white/10 bg-[#121620] p-5">
+                <div className="rounded-2xl border border-white/10 bg-[#551010] p-5">
                   <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
                     <span className="text-xs font-black uppercase text-emerald-400">
                       BLOCO 1 - IMAGEM HERO (MOCKUP 3D)
@@ -951,7 +951,7 @@ function AppContent() {
                 </div>
 
                 {/* Entregáveis Mockups */}
-                <div className="rounded-2xl border border-white/10 bg-[#121620] p-5">
+                <div className="rounded-2xl border border-white/10 bg-[#551010] p-5">
                   <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
                     <span className="text-xs font-black uppercase text-emerald-400">
                       BLOCO 5 - MOCKUPS DOS ENTREGÁVEIS (3 MATERIAIS)
@@ -987,7 +987,7 @@ function AppContent() {
                 </div>
 
                 {/* Bônus Mockups */}
-                <div className="rounded-2xl border border-white/10 bg-[#121620] p-5">
+                <div className="rounded-2xl border border-white/10 bg-[#551010] p-5">
                   <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
                     <span className="text-xs font-black uppercase text-emerald-400">
                       BLOCO 6 - MOCKUPS DOS 3 BÔNUS ACELERADORES
@@ -1023,7 +1023,7 @@ function AppContent() {
                 </div>
 
                 {/* Depoimentos Prints */}
-                <div className="rounded-2xl border border-white/10 bg-[#121620] p-5">
+                <div className="rounded-2xl border border-white/10 bg-[#551010] p-5">
                   <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
                     <span className="text-xs font-black uppercase text-emerald-400">
                       BLOCO 2 - PRINTS SOCIAIS / WHATSAPP DOS DEPOIMENTOS
@@ -1051,7 +1051,7 @@ function AppContent() {
             {/* Tab 3: Live Preview */}
             {activeTab === 'preview' && (
               <div className="mt-6 rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
-                <div className="p-3 bg-[#11141c] border-b border-white/10 flex items-center justify-between text-xs text-white/60">
+                <div className="p-3 bg-[#521010] border-b border-white/10 flex items-center justify-between text-xs text-white/60">
                   <span>Prévia Interativa Ao Vivo</span>
                   <button
                     onClick={handlePublishPage}
