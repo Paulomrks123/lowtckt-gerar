@@ -48,7 +48,7 @@ export function LandingPageView({
             <ArrowLeft className="h-4 w-4" />
             Voltar ao Gerador de Prompt
           </button>
-          <span className="text-xs text-white/60 font-medium">
+          <span className="text-xs text-white/70 font-medium">
             Visualização: Estrutura Curta & Objetiva com 2 Planos (Estilo appstudio-pro)
           </span>
         </div>
@@ -226,7 +226,7 @@ function LandingPageBlocks({
                   "{t.text}"
                 </p>
               </div>
-              <div className="mt-4 pt-3 border-t border-white/10 text-xs font-bold text-white/60">
+              <div className="mt-4 pt-3 border-t border-white/10 text-xs font-bold text-white/70">
                 {t.name} {t.city ? `· ${t.city}` : ''}
               </div>
             </div>
@@ -241,7 +241,7 @@ function LandingPageBlocks({
           <h2 className="text-2xl sm:text-4xl font-extrabold text-white max-w-3xl mx-auto">
             {c.painTitle}
           </h2>
-          <p className="mt-3 text-base text-white/60">
+          <p className="mt-3 text-base text-white/70">
             {c.painSubtitle || 'E ver sempre os mesmos resultados frustrantes… Por isso você pensa:'}
           </p>
         </div>
@@ -307,7 +307,7 @@ function LandingPageBlocks({
           <h2 className="text-2xl sm:text-4xl font-extrabold text-white">
             {c.stepsTitle}
           </h2>
-          <p className="mt-3 text-base text-white/60">
+          <p className="mt-3 text-base text-white/70">
             {c.stepsSubtitle || 'Passos objetivos para colocar no ar sem travar'}
           </p>
         </div>
@@ -333,7 +333,7 @@ function LandingPageBlocks({
                   Passo {idx + 1}
                 </span>
                 <h3 className="text-base font-bold text-white">{st.title}</h3>
-                <p className="mt-2 text-xs sm:text-sm text-white/60 leading-relaxed">
+                <p className="mt-2 text-xs sm:text-sm text-white/70 leading-relaxed">
                   {st.text}
                 </p>
               </div>
@@ -391,7 +391,7 @@ function LandingPageBlocks({
           <h2 className="text-2xl sm:text-4xl font-extrabold text-white">
             {c.extrasTitle}
           </h2>
-          <p className="mt-3 text-base text-white/60">
+          <p className="mt-3 text-base text-white/70">
             Aceleradores inclusos gratuitamente no Pacote Completo
           </p>
         </div>
@@ -489,7 +489,7 @@ function LandingPageBlocks({
             {(c.stackItems || []).map((item, idx) => (
               <div key={idx} className="py-3 flex justify-between items-center text-sm">
                 <span className="text-white/80 font-medium">{item.title}</span>
-                <span className="text-white/60 line-through font-semibold">{item.value}</span>
+                <span className="text-white/70 line-through font-semibold">{item.value}</span>
               </div>
             ))}
           </div>
@@ -512,7 +512,7 @@ function LandingPageBlocks({
           <h2 className="text-2xl sm:text-4xl font-extrabold text-white">
             INVESTIMENTO
           </h2>
-          <p className="mt-2 text-base text-white/60">
+          <p className="mt-2 text-base text-white/70">
             Escolha o plano ideal para você e comece imediatamente:
           </p>
         </div>
@@ -541,7 +541,7 @@ function LandingPageBlocks({
         {c.offer && (
           <div className="mx-auto mt-8 max-w-2xl rounded-2xl border border-emerald-500/30 bg-[#5E1212] p-6 text-center">
             <p className="text-lg sm:text-xl font-extrabold text-white">{c.offer.promise}</p>
-            <p className="mt-2 text-sm text-white/60">
+            <p className="mt-2 text-sm text-white/70">
               De <span className="line-through">{c.completePlan.oldPrice}</span> por{' '}
               <span className="font-bold text-emerald-400">{c.completePlan.price}</span>
             </p>
@@ -767,7 +767,7 @@ function LeadOrderForm({
           <h3 className="text-center text-xl font-extrabold text-white">
             {c.formTitle}
           </h3>
-          <p className="text-center text-xs sm:text-sm text-white/60">
+          <p className="text-center text-xs sm:text-sm text-white/70">
             {c.formSubtitle}
           </p>
 
@@ -802,7 +802,7 @@ function LeadOrderForm({
               className={`rounded-xl border p-3 text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                 selectedPlan === 'basic'
                   ? 'border-emerald-400 bg-emerald-500/20 text-emerald-300'
-                  : 'border-white/10 bg-white/10 text-white/60'
+                  : 'border-white/10 bg-white/10 text-white/70'
               }`}
             >
               {c.basicPlan.name} ({c.basicPlan.price})
@@ -813,7 +813,7 @@ function LeadOrderForm({
               className={`rounded-xl border p-3 text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                 selectedPlan === 'complete'
                   ? 'border-emerald-400 bg-emerald-500/20 text-emerald-300'
-                  : 'border-white/10 bg-white/10 text-white/60'
+                  : 'border-white/10 bg-white/10 text-white/70'
               }`}
             >
               {c.completePlan.name} ({c.completePlan.price})

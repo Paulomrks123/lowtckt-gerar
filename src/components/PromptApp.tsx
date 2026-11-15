@@ -383,7 +383,7 @@ function AppContent() {
     return (
       <div className="flex min-h-screen flex-col items-center justify-center bg-[#4A0A0A] px-4 text-center text-white">
         <h2 className="text-2xl font-bold">Página não encontrada</h2>
-        <p className="mt-2 text-white/60">
+        <p className="mt-2 text-white/70">
           A página solicitada não existe ou expirou.
         </p>
         <button
@@ -462,7 +462,7 @@ function AppContent() {
                   className={`rounded-full border px-4 py-2 text-sm font-medium transition-colors cursor-pointer ${
                     language === langKey
                       ? 'border-emerald-400 bg-emerald-500/20 text-emerald-300 font-bold'
-                      : 'border-white/10 bg-white/10 text-white/60 hover:border-emerald-500/50 hover:text-white'
+                      : 'border-white/10 bg-white/10 text-white/70 hover:border-emerald-500/50 hover:text-white'
                   }`}
                 >
                   {LANGUAGES[langKey].label}
@@ -484,14 +484,14 @@ function AppContent() {
                   className={`rounded-full border px-4 py-2 text-sm font-medium transition-colors cursor-pointer ${
                     variantsCount === vNum
                       ? 'border-emerald-400 bg-emerald-500/20 text-emerald-300 font-bold'
-                      : 'border-white/10 bg-white/10 text-white/60 hover:border-emerald-500/50 hover:text-white'
+                      : 'border-white/10 bg-white/10 text-white/70 hover:border-emerald-500/50 hover:text-white'
                   }`}
                 >
                   {vNum === 1 ? '1 versão' : `${vNum} variações`}
                 </button>
               ))}
             </div>
-            <p className="mt-2 text-xs text-white/60">
+            <p className="mt-2 text-xs text-white/70">
               Cada variação testa um ângulo psicológico diferente (dor, resultado rápido, mecanismo único e prova/história).
             </p>
           </div>
@@ -509,7 +509,7 @@ function AppContent() {
                   className={`rounded-full border px-4 py-2 text-sm font-medium transition-colors cursor-pointer ${
                     toneKey === t
                       ? 'border-emerald-400 bg-emerald-500/20 text-emerald-300 font-bold'
-                      : 'border-white/10 bg-white/10 text-white/60 hover:border-emerald-500/50 hover:text-white'
+                      : 'border-white/10 bg-white/10 text-white/70 hover:border-emerald-500/50 hover:text-white'
                   }`}
                 >
                   {TONE_DETAILS[t].label}
@@ -524,7 +524,7 @@ function AppContent() {
                 className="mt-3 h-11 w-full rounded-xl border border-white/25 bg-[#6B1414] px-3.5 py-1 text-sm text-white placeholder:text-white/60 focus:border-emerald-500 focus:outline-none"
               />
             ) : (
-              <p className="mt-2 text-xs text-white/60">
+              <p className="mt-2 text-xs text-white/70">
                 {TONE_DETAILS[toneKey].instruction}
               </p>
             )}
@@ -611,7 +611,7 @@ function AppContent() {
               )}
             </button>
             {isGenerating && (
-              <p className="mt-3 text-xs text-white/60 text-center">
+              <p className="mt-3 text-xs text-white/70 text-center">
                 Escrevendo a cópia curta dos 11 blocos e estruturando as imagens necessárias...
               </p>
             )}
@@ -623,7 +623,7 @@ function AppContent() {
           {ELEVEN_BLOCKS.map((blockName, idx) => (
             <div
               key={idx}
-              className="flex items-center gap-2.5 rounded-xl border border-white/5 bg-[#5E1212]/70 p-3 text-xs sm:text-sm text-white/60 shadow-sm"
+              className="flex items-center gap-2.5 rounded-xl border border-white/5 bg-[#5E1212]/70 p-3 text-xs sm:text-sm text-white/70 shadow-sm"
             >
               <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-emerald-500/20 text-xs font-bold text-emerald-400">
                 {idx + 1}
@@ -655,7 +655,7 @@ function AppContent() {
                   className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                     activeTab === 'prompt'
                       ? 'bg-emerald-500 text-black shadow'
-                      : 'text-white/60 hover:text-white'
+                      : 'text-white/70 hover:text-white'
                   }`}
                 >
                   <FileText className="h-3.5 w-3.5" />
@@ -667,7 +667,7 @@ function AppContent() {
                   className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                     activeTab === 'images'
                       ? 'bg-emerald-500 text-black shadow'
-                      : 'text-white/60 hover:text-white'
+                      : 'text-white/70 hover:text-white'
                   }`}
                 >
                   <ImageIcon className="h-3.5 w-3.5" />
@@ -679,7 +679,7 @@ function AppContent() {
                   className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                     activeTab === 'preview'
                       ? 'bg-emerald-500 text-black shadow'
-                      : 'text-white/60 hover:text-white'
+                      : 'text-white/70 hover:text-white'
                   }`}
                 >
                   <Eye className="h-3.5 w-3.5" />
@@ -731,7 +731,7 @@ function AppContent() {
                         className={`rounded-lg border px-3 py-1.5 text-xs font-bold transition-colors cursor-pointer ${
                           safeModelIdx === idx
                             ? 'border-emerald-400 bg-emerald-500/20 text-emerald-300'
-                            : 'border-white/10 bg-white/10 text-white/60 hover:text-white'
+                            : 'border-white/10 bg-white/10 text-white/70 hover:text-white'
                         }`}
                       >
                         {m.label}
@@ -750,7 +750,7 @@ function AppContent() {
                         className={`rounded-full border px-3 py-1 text-xs font-medium transition-colors cursor-pointer ${
                           safeVariantIdx === idx
                             ? 'border-emerald-400 bg-emerald-400 text-black font-bold'
-                            : 'border-white/10 bg-white/10 text-white/60 hover:text-white'
+                            : 'border-white/10 bg-white/10 text-white/70 hover:text-white'
                         }`}
                       >
                         {v.label}
@@ -1051,7 +1051,7 @@ function AppContent() {
             {/* Tab 3: Live Preview */}
             {activeTab === 'preview' && (
               <div className="mt-6 rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
-                <div className="p-3 bg-[#521010] border-b border-white/10 flex items-center justify-between text-xs text-white/60">
+                <div className="p-3 bg-[#521010] border-b border-white/10 flex items-center justify-between text-xs text-white/70">
                   <span>Prévia Interativa Ao Vivo</span>
                   <button
                     onClick={handlePublishPage}
