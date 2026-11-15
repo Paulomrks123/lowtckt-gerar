@@ -127,18 +127,6 @@ function LandingPageBlocks({
         <div className="pointer-events-none absolute inset-x-0 top-0 h-96 bg-[radial-gradient(ellipse_at_top,rgba(255,132,80,0.20),transparent_70%)]" />
 
         <div className="relative mx-auto max-w-4xl">
-          {/* Logo */}
-          {c.images.logo && (
-            <div className="mb-6 flex justify-center">
-              <img
-                src={c.images.logo}
-                alt="Logo"
-                referrerPolicy="no-referrer"
-                className="h-10 sm:h-12 w-auto object-contain drop-shadow"
-              />
-            </div>
-          )}
-
           <BlockBadge label="BLOCO 1 - VENDER SOZINHO" />
 
           {c.mechanism?.name && (
