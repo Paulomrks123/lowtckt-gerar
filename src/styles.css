@@ -711,32 +711,20 @@ main.min-h-screen a:focus-visible,
 }
 
 
-/* RESPONSIVE ALIGNMENT — mobile first, centered on every viewport */
-*, *::before, *::after {
-  box-sizing: border-box;
-}
 
-html {
-  width: 100%;
-  scroll-padding-top: 1rem;
-}
 
-body, #root {
+/* RESPONSIVE REWORK — content-first layout for phones, tablets and desktop */
+html, body, #root {
   width: 100%;
+  max-width: 100%;
   min-width: 320px;
-  max-width: 100%;
-  margin-inline: auto;
 }
 
-#root {
-  overflow-x: clip;
+body, #root, main, .lp-experience {
+  min-width: 0;
 }
 
-main.min-h-screen,
-.lp-experience {
-  width: 100%;
-  max-width: 100%;
-  margin-inline: auto;
+#root, main.min-h-screen, .lp-experience {
   overflow-x: clip;
 }
 
@@ -746,25 +734,23 @@ main.min-h-screen > .relative.mx-auto {
 }
 
 main.min-h-screen header.text-center,
-.lp-experience > header,
-.lp-experience section > div,
-.lp-experience footer > div {
-  margin-inline: auto;
-}
-
 main.min-h-screen form.mt-10 {
   width: 100%;
   margin-inline: auto;
 }
 
-main.min-h-screen form.mt-10 > *,
-.lp-experience section > div > * {
-  min-width: 0;
+main.min-h-screen form.mt-10 {
+  max-width: 920px;
 }
 
-.lp-experience > header > div,
-.lp-experience section > div {
-  width: min(100%, 1024px);
+.lp-experience > header {
+  min-height: 0;
+  padding-inline: clamp(1rem, 4vw, 2rem);
+}
+
+.lp-experience > header > div {
+  width: 100%;
+  max-width: 1024px;
   margin-inline: auto;
 }
 
@@ -773,129 +759,126 @@ main.min-h-screen form.mt-10 > *,
   padding-inline: clamp(1rem, 4vw, 2rem);
 }
 
-.lp-experience section h2,
-.lp-experience section h3,
-.lp-experience > header h1,
-.lp-experience > header p {
+.lp-experience section > div {
+  width: 100%;
+  max-width: 1024px;
   margin-inline: auto;
-  text-align: center;
-  text-wrap: balance;
 }
 
-.lp-experience section .grid {
-  justify-items: stretch;
-  align-items: stretch;
-}
-
-.lp-experience section .grid > div {
-  min-width: 0;
-  max-width: 100%;
-}
-
-.lp-experience img,
-main.min-h-screen img {
+.lp-experience img {
+  display: block;
   max-width: 100%;
   height: auto;
 }
 
 .lp-experience button,
 main.min-h-screen button {
+  min-width: 0;
   max-width: 100%;
-  white-space: normal;
   overflow-wrap: anywhere;
 }
 
-main.min-h-screen input,
-main.min-h-screen select,
-main.min-h-screen textarea,
 .lp-experience input,
 .lp-experience select,
-.lp-experience textarea {
-  width: 100%;
+.lp-experience textarea,
+main.min-h-screen input,
+main.min-h-screen select,
+main.min-h-screen textarea {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.lp-experience section .grid {
+  min-width: 0;
+}
+
+.lp-experience section .grid > * {
   min-width: 0;
   max-width: 100%;
 }
 
 @media (max-width: 640px) {
   main.min-h-screen > .relative.mx-auto {
-    width: min(100% - 1.25rem, 540px);
-    padding-top: 3.75rem;
-    padding-bottom: 2.5rem;
+    width: calc(100% - 28px);
+    padding-top: 3.5rem;
+    padding-bottom: 3rem;
   }
 
   main.min-h-screen header.text-center {
-    width: 100%;
-    padding: 1rem .25rem 1.5rem;
+    padding: 1rem 0 1.5rem;
     text-align: center;
   }
 
   main.min-h-screen header.text-center h1 {
     max-width: 100%;
-    font-size: clamp(2rem, 9.5vw, 3.25rem);
-    line-height: 1.06;
+    font-size: clamp(2rem, 9vw, 3.15rem);
+    line-height: 1.08;
+    letter-spacing: -.045em;
     overflow-wrap: anywhere;
   }
 
   main.min-h-screen header.text-center p {
     margin-inline: auto;
-    text-align: center;
+    font-size: 1rem;
+    line-height: 1.65;
   }
 
   main.min-h-screen form.mt-10 {
-    width: 100%;
-    max-width: 540px;
-    margin: 1.5rem auto 0;
-    padding: clamp(1rem, 4vw, 1.35rem);
+    max-width: 520px;
+    margin: 1.25rem auto 0;
+    padding: 1rem;
     border-radius: 20px;
   }
 
-  main.min-h-screen form.mt-10 .grid {
+  main.min-h-screen form.mt-10 .grid,
+  main.min-h-screen form.mt-10 [class*="grid-cols-"] {
     grid-template-columns: minmax(0, 1fr) !important;
   }
 
-  main.min-h-screen form.mt-10 button,
-  main.min-h-screen form.mt-10 input {
+  main.min-h-screen form.mt-10 button {
     min-height: 46px;
   }
 
   .lp-experience > header {
-    min-height: auto;
-    padding: 5.25rem 1rem 3.5rem;
+    padding: 5rem 1rem 3rem;
     text-align: center;
   }
 
   .lp-experience > header::before {
-    top: 1.65rem;
+    top: 1.5rem;
+    left: 50%;
     width: calc(100% - 2rem);
+    transform: translateX(-50%);
     text-align: center;
-    font-size: clamp(.45rem, 2vw, .58rem);
-    letter-spacing: .12em;
-  }
-
-  .lp-experience > header > div {
-    width: 100%;
+    white-space: normal;
+    font-size: .52rem;
+    letter-spacing: .1em;
   }
 
   .lp-experience > header h1 {
-    font-size: clamp(2rem, 9vw, 3.5rem);
-    line-height: 1.06;
+    max-width: 100%;
+    font-size: clamp(2rem, 9vw, 3.25rem);
+    line-height: 1.08;
+    letter-spacing: -.045em;
+    overflow-wrap: anywhere;
   }
 
   .lp-experience > header p {
-    max-width: 36rem;
+    max-width: 34rem;
     font-size: 1rem;
-    line-height: 1.7;
+    line-height: 1.65;
   }
 
-  .lp-experience > header button,
-  .lp-experience section button[class*="bg-gradient-to-r"],
-  .lp-experience #form-lead button[type="submit"] {
+  .lp-experience > header .mt-8 > button,
+  .lp-experience section button[class*="bg-gradient-to-r"] {
     width: 100%;
-    justify-content: center;
+    min-height: 50px;
+    padding-inline: 1rem;
+    white-space: normal;
   }
 
   .lp-experience section {
-    padding: 3.25rem 1rem;
+    padding: 3rem 1rem;
   }
 
   .lp-experience section > div {
@@ -904,18 +887,50 @@ main.min-h-screen textarea,
     margin-inline: auto;
   }
 
-  .lp-experience section .grid {
+  /* Stack every multi-column section into a readable single column. */
+  .lp-experience section .grid,
+  .lp-experience #form-lead .grid {
     grid-template-columns: minmax(0, 1fr) !important;
     gap: 1rem;
   }
 
+  .lp-experience section .grid > *,
   .lp-experience section .grid > div {
     width: 100%;
-    text-align: center;
+    min-width: 0;
+    margin-inline: auto;
+  }
+
+  /* Remove the desktop emphasis scale that clips pricing cards on phones. */
+  .lp-experience #comprar .grid > div {
+    transform: none !important;
+    width: 100%;
+    padding: 1.25rem;
+  }
+
+  .lp-experience #comprar .grid > div:hover {
+    transform: none !important;
+  }
+
+  .lp-experience #comprar .grid > div .flex.items-baseline {
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: .35rem .5rem;
+  }
+
+  .lp-experience #comprar .grid > div .text-3xl {
+    font-size: clamp(1.7rem, 8vw, 2.25rem);
+    overflow-wrap: anywhere;
   }
 
   .lp-experience section h2 {
-    font-size: clamp(1.75rem, 7.5vw, 2.5rem);
+    font-size: clamp(1.65rem, 7.5vw, 2.35rem);
+    line-height: 1.12;
+    text-align: center;
+  }
+
+  .lp-experience section h3 {
+    overflow-wrap: anywhere;
   }
 
   .lp-experience section p {
@@ -924,6 +939,7 @@ main.min-h-screen textarea,
 
   .lp-experience section ul {
     text-align: left;
+    padding-left: 0;
   }
 
   .lp-experience section [class*="flex-row"] {
@@ -933,16 +949,50 @@ main.min-h-screen textarea,
   .lp-experience #form-lead {
     width: 100%;
     max-width: 480px;
-    margin-inline: auto;
-    padding: 1.15rem;
+    margin: 2rem auto 0;
+    padding: 1rem;
   }
 
-  .lp-experience #form-lead .grid {
-    grid-template-columns: minmax(0, 1fr) !important;
+  .lp-experience #form-lead form {
+    width: 100%;
+  }
+
+  .lp-experience #form-lead .grid button {
+    width: 100%;
+    min-height: 48px;
+    padding: .75rem;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+  }
+
+  .lp-experience #form-lead button[type="submit"] {
+    width: 100%;
+    min-height: 52px;
+  }
+
+  /* Keep recap rows and FAQ controls inside the viewport. */
+  .lp-experience section .divide-y > div {
+    gap: .75rem;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .lp-experience section details summary {
+    gap: .75rem;
+    align-items: flex-start;
+  }
+
+  .lp-experience section details summary span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .lp-experience section details summary svg {
+    flex: 0 0 auto;
   }
 
   .lp-experience footer {
-    padding-inline: 1rem;
+    padding: 2rem 1rem;
     text-align: center;
   }
 
@@ -953,49 +1003,48 @@ main.min-h-screen textarea,
     overflow-wrap: anywhere;
   }
 
-  /* Preview toolbar: prevent long labels from pushing the viewport */
   .lp-experience > div.sticky {
-    gap: .75rem;
-    align-items: center;
+    position: relative;
+    gap: .65rem;
     flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
   }
 
-  .lp-experience > div.sticky > span {
+  .lp-experience > div.sticky > * {
     max-width: 100%;
     text-align: center;
   }
 }
 
-@media (min-width: 641px) and (max-width: 1024px) {
+@media (min-width: 641px) and (max-width: 900px) {
   main.min-h-screen > .relative.mx-auto {
-    width: min(100% - 3rem, 900px);
-  }
-
-  main.min-h-screen form.mt-10 {
-    width: 100%;
-  }
-
-  .lp-experience > header {
-    min-height: auto;
-    padding: 6rem 2rem 4.5rem;
+    width: calc(100% - 3rem);
   }
 
   .lp-experience section {
-    padding-inline: clamp(1.5rem, 4vw, 2.5rem);
+    padding-inline: 1.5rem;
   }
 
-  .lp-experience section > div {
-    width: 100%;
-    max-width: 900px;
-    margin-inline: auto;
+  .lp-experience section .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .lp-experience #comprar .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .lp-experience #comprar .grid > div {
+    transform: none;
+    padding: 1.25rem;
+  }
+
+  .lp-experience #comprar .grid > div .flex.items-baseline {
+    flex-wrap: wrap;
   }
 }
 
-@media (min-width: 1025px) {
-  main.min-h-screen > .relative.mx-auto {
-    width: min(100% - 4rem, 1120px);
-  }
-
+@media (min-width: 901px) {
   .lp-experience section > div {
     max-width: 1024px;
   }
@@ -1003,18 +1052,19 @@ main.min-h-screen textarea,
 
 @media (max-width: 360px) {
   main.min-h-screen > .relative.mx-auto {
-    width: calc(100% - 1rem);
+    width: calc(100% - 20px);
   }
 
+  .lp-experience > header,
   .lp-experience section {
     padding-inline: .75rem;
   }
 
   .lp-experience #form-lead {
-    padding: .9rem;
+    padding: .85rem;
   }
 
   .lp-experience > header::before {
-    letter-spacing: .08em;
+    letter-spacing: .06em;
   }
 }
