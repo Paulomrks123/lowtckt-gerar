@@ -74,7 +74,7 @@ export function SettingsMenu() {
                 </button>
               )}
             </div>
-            <p className="mt-3 text-xs text-white/50">{saved ? '✓ Chave salva' : 'Nenhuma chave salva'}</p>
+            <p className="mt-3 text-xs text-white/60">{saved ? '✓ Chave salva' : 'Nenhuma chave salva'}</p>
             <a href="https://platform.openai.com/api-keys" target="_blank" rel="noreferrer" className="mt-4 inline-block text-xs text-emerald-400 underline">
               Obter uma chave na OpenAI
             </a>

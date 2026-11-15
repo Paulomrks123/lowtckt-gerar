@@ -438,13 +438,13 @@ function AppContent() {
             URL da oferta
           </label>
           <div className="mt-2 relative">
-            <Link2 className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-white/40" />
+            <Link2 className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-white/55" />
             <input
               id="url"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
               placeholder="https://minhaoferta.com/produto"
-              className="h-12 w-full rounded-xl border border-white/10 bg-[#4A0A0A] pl-9 pr-4 text-base text-white shadow-sm transition-colors placeholder:text-white/40 focus:border-emerald-500 focus:outline-none"
+              className="h-12 w-full rounded-xl border border-white/25 bg-[#6B1414] pl-9 pr-4 text-base text-white shadow-sm transition-colors placeholder:text-white/60 focus:border-emerald-500 focus:outline-none"
               inputMode="url"
             />
           </div>
@@ -462,7 +462,7 @@ function AppContent() {
                   className={`rounded-full border px-4 py-2 text-sm font-medium transition-colors cursor-pointer ${
                     language === langKey
                       ? 'border-emerald-400 bg-emerald-500/20 text-emerald-300 font-bold'
-                      : 'border-white/10 bg-white/5 text-white/60 hover:border-emerald-500/50 hover:text-white'
+                      : 'border-white/10 bg-white/10 text-white/60 hover:border-emerald-500/50 hover:text-white'
                   }`}
                 >
                   {LANGUAGES[langKey].label}
@@ -484,14 +484,14 @@ function AppContent() {
                   className={`rounded-full border px-4 py-2 text-sm font-medium transition-colors cursor-pointer ${
                     variantsCount === vNum
                       ? 'border-emerald-400 bg-emerald-500/20 text-emerald-300 font-bold'
-                      : 'border-white/10 bg-white/5 text-white/60 hover:border-emerald-500/50 hover:text-white'
+                      : 'border-white/10 bg-white/10 text-white/60 hover:border-emerald-500/50 hover:text-white'
                   }`}
                 >
                   {vNum === 1 ? '1 versão' : `${vNum} variações`}
                 </button>
               ))}
             </div>
-            <p className="mt-2 text-xs text-white/50">
+            <p className="mt-2 text-xs text-white/60">
               Cada variação testa um ângulo psicológico diferente (dor, resultado rápido, mecanismo único e prova/história).
             </p>
           </div>
@@ -509,7 +509,7 @@ function AppContent() {
                   className={`rounded-full border px-4 py-2 text-sm font-medium transition-colors cursor-pointer ${
                     toneKey === t
                       ? 'border-emerald-400 bg-emerald-500/20 text-emerald-300 font-bold'
-                      : 'border-white/10 bg-white/5 text-white/60 hover:border-emerald-500/50 hover:text-white'
+                      : 'border-white/10 bg-white/10 text-white/60 hover:border-emerald-500/50 hover:text-white'
                   }`}
                 >
                   {TONE_DETAILS[t].label}
@@ -521,10 +521,10 @@ function AppContent() {
                 value={customTone}
                 onChange={(e) => setCustomTone(e.target.value)}
                 placeholder="Descreva o tom: curto, direto, provocativo e acolhedor"
-                className="mt-3 h-11 w-full rounded-xl border border-white/10 bg-[#4A0A0A] px-3.5 py-1 text-sm text-white placeholder:text-white/40 focus:border-emerald-500 focus:outline-none"
+                className="mt-3 h-11 w-full rounded-xl border border-white/25 bg-[#6B1414] px-3.5 py-1 text-sm text-white placeholder:text-white/60 focus:border-emerald-500 focus:outline-none"
               />
             ) : (
-              <p className="mt-2 text-xs text-white/50">
+              <p className="mt-2 text-xs text-white/60">
                 {TONE_DETAILS[toneKey].instruction}
               </p>
             )}
@@ -544,7 +544,7 @@ function AppContent() {
                 value={productName}
                 onChange={(e) => setProductName(e.target.value)}
                 placeholder="Método Vender Sozinho"
-                className="mt-2 h-11 w-full rounded-xl border border-white/10 bg-[#4A0A0A] px-3.5 py-1 text-sm text-white shadow-sm placeholder:text-white/40 focus:border-emerald-500 focus:outline-none"
+                className="mt-2 h-11 w-full rounded-xl border border-white/25 bg-[#6B1414] px-3.5 py-1 text-sm text-white shadow-sm placeholder:text-white/60 focus:border-emerald-500 focus:outline-none"
               />
             </div>
             <div>
@@ -559,7 +559,7 @@ function AppContent() {
                 value={basicPrice}
                 onChange={(e) => setBasicPrice(e.target.value)}
                 placeholder="R$ 27,00"
-                className="mt-2 h-11 w-full rounded-xl border border-white/10 bg-[#4A0A0A] px-3.5 py-1 text-sm text-white shadow-sm placeholder:text-white/40 focus:border-emerald-500 focus:outline-none"
+                className="mt-2 h-11 w-full rounded-xl border border-white/25 bg-[#6B1414] px-3.5 py-1 text-sm text-white shadow-sm placeholder:text-white/60 focus:border-emerald-500 focus:outline-none"
               />
             </div>
             <div>
@@ -574,7 +574,7 @@ function AppContent() {
                 value={completePrice}
                 onChange={(e) => setCompletePrice(e.target.value)}
                 placeholder="R$ 47,00"
-                className="mt-2 h-11 w-full rounded-xl border border-white/10 bg-[#4A0A0A] px-3.5 py-1 text-sm text-white shadow-sm placeholder:text-white/40 focus:border-emerald-500 focus:outline-none"
+                className="mt-2 h-11 w-full rounded-xl border border-white/25 bg-[#6B1414] px-3.5 py-1 text-sm text-white shadow-sm placeholder:text-white/60 focus:border-emerald-500 focus:outline-none"
               />
             </div>
             <div>
@@ -589,7 +589,7 @@ function AppContent() {
                 value={audience}
                 onChange={(e) => setAudience(e.target.value)}
                 placeholder="Empreendedores iniciantes sem tempo"
-                className="mt-2 h-11 w-full rounded-xl border border-white/10 bg-[#4A0A0A] px-3.5 py-1 text-sm text-white shadow-sm placeholder:text-white/40 focus:border-emerald-500 focus:outline-none"
+                className="mt-2 h-11 w-full rounded-xl border border-white/25 bg-[#6B1414] px-3.5 py-1 text-sm text-white shadow-sm placeholder:text-white/60 focus:border-emerald-500 focus:outline-none"
               />
             </div>
           </div>
@@ -611,7 +611,7 @@ function AppContent() {
               )}
             </button>
             {isGenerating && (
-              <p className="mt-3 text-xs text-white/50 text-center">
+              <p className="mt-3 text-xs text-white/60 text-center">
                 Escrevendo a cópia curta dos 11 blocos e estruturando as imagens necessárias...
               </p>
             )}
@@ -700,7 +700,7 @@ function AppContent() {
                       className={`rounded-lg border px-3 py-2 text-left text-sm transition-colors cursor-pointer ${
                         currentContent.headline === h
                           ? 'border-emerald-400 bg-emerald-500/20 text-white'
-                          : 'border-white/10 bg-white/5 text-white/70 hover:text-white'
+                          : 'border-white/10 bg-white/10 text-white/70 hover:text-white'
                       }`}
                     >
                       {i + 1}. {h}
@@ -731,7 +731,7 @@ function AppContent() {
                         className={`rounded-lg border px-3 py-1.5 text-xs font-bold transition-colors cursor-pointer ${
                           safeModelIdx === idx
                             ? 'border-emerald-400 bg-emerald-500/20 text-emerald-300'
-                            : 'border-white/10 bg-white/5 text-white/60 hover:text-white'
+                            : 'border-white/10 bg-white/10 text-white/60 hover:text-white'
                         }`}
                       >
                         {m.label}
@@ -750,7 +750,7 @@ function AppContent() {
                         className={`rounded-full border px-3 py-1 text-xs font-medium transition-colors cursor-pointer ${
                           safeVariantIdx === idx
                             ? 'border-emerald-400 bg-emerald-400 text-black font-bold'
-                            : 'border-white/10 bg-white/5 text-white/60 hover:text-white'
+                            : 'border-white/10 bg-white/10 text-white/60 hover:text-white'
                         }`}
                       >
                         {v.label}
@@ -765,7 +765,7 @@ function AppContent() {
                 {variants.length > 1 && activeTab === 'prompt' && (
                   <button
                     onClick={() => setCompareSideBySide((prev) => !prev)}
-                    className="inline-flex items-center rounded-xl border border-white/10 px-3 py-2 text-xs font-semibold text-white/80 hover:bg-white/5 transition-colors cursor-pointer"
+                    className="inline-flex items-center rounded-xl border border-white/10 px-3 py-2 text-xs font-semibold text-white/80 hover:bg-white/10 transition-colors cursor-pointer"
                   >
                     <Columns2 className="mr-1.5 h-3.5 w-3.5" />
                     {compareSideBySide ? 'Ver 1 por vez' : 'Lado a lado'}
@@ -793,7 +793,7 @@ function AppContent() {
                 )}
                 <button
                   onClick={handleDownloadMarkdown}
-                  className="inline-flex items-center rounded-xl border border-white/10 px-3 py-2 text-xs font-semibold text-white/80 hover:bg-white/5 transition-colors cursor-pointer"
+                  className="inline-flex items-center rounded-xl border border-white/10 px-3 py-2 text-xs font-semibold text-white/80 hover:bg-white/10 transition-colors cursor-pointer"
                 >
                   <Download className="mr-1.5 h-3.5 w-3.5" />
                   Baixar .md

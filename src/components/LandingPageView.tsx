@@ -48,7 +48,7 @@ export function LandingPageView({
             <ArrowLeft className="h-4 w-4" />
             Voltar ao Gerador de Prompt
           </button>
-          <span className="text-xs text-white/50 font-medium">
+          <span className="text-xs text-white/60 font-medium">
             Visualização: Estrutura Curta & Objetiva com 2 Planos (Estilo appstudio-pro)
           </span>
         </div>
@@ -164,7 +164,7 @@ function LandingPageBlocks({
               {c.badges.map((b, idx) => (
                 <span
                   key={idx}
-                  className="rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-white/80"
+                  className="rounded-full border border-white/10 bg-white/10 px-4 py-1.5 text-white/80"
                 >
                   {b}
                 </span>
@@ -226,7 +226,7 @@ function LandingPageBlocks({
                   "{t.text}"
                 </p>
               </div>
-              <div className="mt-4 pt-3 border-t border-white/10 text-xs font-bold text-white/50">
+              <div className="mt-4 pt-3 border-t border-white/10 text-xs font-bold text-white/60">
                 {t.name} {t.city ? `· ${t.city}` : ''}
               </div>
             </div>
@@ -489,7 +489,7 @@ function LandingPageBlocks({
             {(c.stackItems || []).map((item, idx) => (
               <div key={idx} className="py-3 flex justify-between items-center text-sm">
                 <span className="text-white/80 font-medium">{item.title}</span>
-                <span className="text-white/50 line-through font-semibold">{item.value}</span>
+                <span className="text-white/60 line-through font-semibold">{item.value}</span>
               </div>
             ))}
           </div>
@@ -637,7 +637,7 @@ function LandingPageBlocks({
       </Section>
 
       {/* Rodapé Legal */}
-      <footer className="border-t border-white/5 bg-[#380707] px-5 py-10 text-center text-xs text-white/40 leading-relaxed">
+      <footer className="border-t border-white/5 bg-[#380707] px-5 py-10 text-center text-xs text-white/55 leading-relaxed">
         <div className="mx-auto max-w-3xl whitespace-pre-line">
           {c.footer}
         </div>
@@ -674,7 +674,7 @@ function PricingCard({
 
         <div className="mt-4">
           {plan.oldPrice && (
-            <p className="text-xs sm:text-sm text-white/40 line-through">
+            <p className="text-xs sm:text-sm text-white/55 line-through">
               De {plan.oldPrice}
             </p>
           )}
@@ -701,7 +701,7 @@ function PricingCard({
         className={`mt-8 w-full rounded-xl py-3.5 text-sm font-black uppercase tracking-wider transition-all cursor-pointer ${
           isPopular
             ? 'bg-emerald-400 text-black shadow-lg hover:bg-emerald-300'
-            : 'border border-white/20 bg-white/5 text-white hover:bg-white/10'
+            : 'border border-white/20 bg-white/10 text-white hover:bg-white/10'
         }`}
       >
         {plan.cta}
@@ -767,7 +767,7 @@ function LeadOrderForm({
           <h3 className="text-center text-xl font-extrabold text-white">
             {c.formTitle}
           </h3>
-          <p className="text-center text-xs sm:text-sm text-white/50">
+          <p className="text-center text-xs sm:text-sm text-white/60">
             {c.formSubtitle}
           </p>
 
@@ -776,7 +776,7 @@ function LeadOrderForm({
             required
             maxLength={120}
             placeholder={c.labels?.name || 'Seu nome completo'}
-            className="flex h-12 w-full rounded-xl border border-white/10 bg-[#4A0A0A] px-4 py-2 text-sm text-white placeholder:text-white/40 focus:border-emerald-500 focus:outline-none"
+            className="flex h-12 w-full rounded-xl border border-white/25 bg-[#6B1414] px-4 py-2 text-sm text-white placeholder:text-white/60 focus:border-emerald-500 focus:outline-none"
           />
 
           <input
@@ -785,14 +785,14 @@ function LeadOrderForm({
             required
             maxLength={200}
             placeholder={c.labels?.email || 'Seu melhor e-mail'}
-            className="flex h-12 w-full rounded-xl border border-white/10 bg-[#4A0A0A] px-4 py-2 text-sm text-white placeholder:text-white/40 focus:border-emerald-500 focus:outline-none"
+            className="flex h-12 w-full rounded-xl border border-white/25 bg-[#6B1414] px-4 py-2 text-sm text-white placeholder:text-white/60 focus:border-emerald-500 focus:outline-none"
           />
 
           <input
             name="phone"
             maxLength={40}
             placeholder={c.labels?.phone || 'WhatsApp com DDD'}
-            className="flex h-12 w-full rounded-xl border border-white/10 bg-[#4A0A0A] px-4 py-2 text-sm text-white placeholder:text-white/40 focus:border-emerald-500 focus:outline-none"
+            className="flex h-12 w-full rounded-xl border border-white/25 bg-[#6B1414] px-4 py-2 text-sm text-white placeholder:text-white/60 focus:border-emerald-500 focus:outline-none"
           />
 
           <div className="grid grid-cols-2 gap-2 pt-1">
@@ -802,7 +802,7 @@ function LeadOrderForm({
               className={`rounded-xl border p-3 text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                 selectedPlan === 'basic'
                   ? 'border-emerald-400 bg-emerald-500/20 text-emerald-300'
-                  : 'border-white/10 bg-white/5 text-white/60'
+                  : 'border-white/10 bg-white/10 text-white/60'
               }`}
             >
               {c.basicPlan.name} ({c.basicPlan.price})
@@ -813,7 +813,7 @@ function LeadOrderForm({
               className={`rounded-xl border p-3 text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                 selectedPlan === 'complete'
                   ? 'border-emerald-400 bg-emerald-500/20 text-emerald-300'
-                  : 'border-white/10 bg-white/5 text-white/60'
+                  : 'border-white/10 bg-white/10 text-white/60'
               }`}
             >
               {c.completePlan.name} ({c.completePlan.price})
